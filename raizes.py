@@ -3,14 +3,27 @@
 def raiz(funcao, a, b, tol, method):
 
     if method == "bissecao":
-        pass
+        return Bissecao(funcao,a,b,tol)
 
     elif method == "secante":
-        pass
+        return Secante(funcao,a,b,tol)
 
     elif method == "newton_raphson":
-        pass
+        return Newton(funcao,a,b,tol)
 
     else:
-        pass
         #Exibir mensagem de erro: "método não reconhecido"    
+        pass
+        
+
+    def Bissecao(funcao,a,b,tol):
+        #Implementar o Método da Bisseção
+        pass
+
+    def Secante(funcao,a,b,tol):
+        #Implementar o Método da Secante
+        pass
+
+    def Newton(funcao,a,b,tol):
+        #Implementar o Método de Newton-Raphson
+        pass
