@@ -1,9 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-a = 0
-b = np.pi
-
 def integral(funcao, a, b, n=100):
     '''
     Integra numericamente uma função dada, utilizando uma aproximação trapezoidal.
@@ -25,25 +22,22 @@ def integral(funcao, a, b, n=100):
 
     return float(f"{valor_integral:.4g}")
 
-def grafico(a , b , s, n=20):
+def grafico(funcao, a , b , s, area, n=20):
     ''' dados curva suave '''
-    s = 100
     x_curva = np.linspace(a , b , s)
-    y_curva = np.sin(x_curva)
+    y_curva = funcao(x_curva)
 
-    ''' número de trapézios '''
-    n = 20
     '''vértices do trapézio '''
     x_disc = np.linspace(a , b , n+1)
-    y_disc = np.sin(x_disc)
+    y_disc = funcao(x_disc)
 
 
-    plt.plot(x_curva,y_curva, label = "f(x) = sen(x)", color = "blue", alpha = 0.8)
+    plt.plot(x_curva,y_curva, label = "f(x)", color = "blue", alpha = 0.8)
     plt.fill_between(x_disc,y_disc,0, label = "Área da Integral", color = "skyblue", alpha = 0.8)
     plt.vlines(x_disc,0,y_disc, color = "red" , linestyle = "--" , linewidth = 1)
     plt.plot(x_disc,y_disc, color = "red" , linewidth = 1.5)
 
-    plt.title("Aproximação da Integral")
+    plt.title(f"Aproximação da Integral ≈ {area:.4f}")
     plt.xlabel("Eixo X")
     plt.ylabel("Eixo Y")
     plt.legend()
@@ -53,8 +47,13 @@ def grafico(a , b , s, n=20):
     return plt.show()
 
 
-f = lambda x: np.sin(x)
-area = integral(f, 0, np.pi, n=100)
+funcao = lambda x: np.sin(x)
+a = 0
+b = np.pi
+'''número de pontos para a curva suave'''
+s = 100 
+''' n = número de partições de trapézios'''
+area = integral(funcao, a, b, n=100)
 print(area)
-s=100
-grafico(a , b , s , n=20)
+grafico(funcao, a, b, s, area, n=20)
+
