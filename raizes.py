@@ -17,7 +17,12 @@ def raiz(funcao, a, b, tol, method):
         
 
     def Bissecao(funcao,a,b,tol):
-        #Implementar o Método da Bisseção
+        '''parametros: função, intervalos e tolerância'''
+        '''retornar erro se na verificação de sinais der f(a).f(b)>0, ou seja, raiz não está entre esse intervalo, se der certo(<0), continua'''
+        '''estrutura principal: loop até encontrar a raiz (valor encontrado menor que a tolerância) ou o número de iterações ultrapassar o esperado(prevenir loop infinito se algo der errado)'''
+        ''' ideia: calcular o ponto médio do intervalo, analisar os sinais, modificar o intervalo para o ponto medio até a ou b e repetir...'''
+        ''' ou seja: Verificar Sinais(f(a).f(b)<0) -> Loop -> Calcular Meio -> Salvar Meio -> Decidir Nova Metade -> Repetir até encontrar uma raiz'''
+       
         pass
 
     def Secante(funcao,a,b,tol):
