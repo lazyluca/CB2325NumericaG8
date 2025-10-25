@@ -44,8 +44,26 @@ def Bissecao(funcao,a,b,tol):
     return (a+b)/2,iter_para_plote
 
 def Secante(funcao,a,b,tol):
-    #Implementar o Método da Secante
-    pass
+    iter=0
+
+    while iter<10000:
+
+        f_a=funcao(a)
+        f_b=funcao(b)
+
+        if(f_a-f_b==0):
+            raise ZeroDivisionError("Erro: f(a) - f(b) = 0. Divisão por zero.")
+        
+        c=b-f_b*((b-a)/(f_b-f_a))
+        f_c=funcao(c)
+
+        if(abs(c-b)<tol or abs(f_c)<tol):
+            return c,[c]
+        a=b
+        b=c
+        iter+=1
+    raise RuntimeError("Número máximo de iterações atingido sem convergência.")
+
 
 def Newton(funcao,a,b,tol):
     #Implementar o Método de Newton-Raphson
@@ -59,3 +77,7 @@ if __name__=="__main__":
   fi= lambda x: x**2-4
   valor2,_=raiz(fi,0,4,1e-6,"bissecao")
   print(valor2)
+
+  f=lambda x:x**3-9*x+5
+  raiz_0,_=raiz(f,a=0,b=2,tol=1e-6,method="secante")
+  print(f"{raiz_0:.3f}")
