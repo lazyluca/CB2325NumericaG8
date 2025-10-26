@@ -1,5 +1,5 @@
 import numpy as np
-
+import matplotlib.pyplot as plt
 
 class PolynomialInterpolator:
     """
@@ -112,7 +112,31 @@ if __name__ == "__main__":
     """
     vetor_x = [0, 1, 2, 3]
     vetor_y = [1, 2, 0, 4]
+    '''
+    i = Número de pontos da curva suave
+    '''
+    i = 500
     
     p = PolynomialInterpolator(vetor_x, vetor_y)
+
+    '''
+    Representação Gráfica:
+    Pontos de Entrada
+    '''
+    plt.plot( vetor_x , vetor_y , 'o' , label = "Pontos de Entrada")
+ 
+    '''
+    Pontos da Curva Suave
+    '''
+    x_suave = np.linspace(np.min(vetor_x) , np.max(vetor_x) , i)
+    y_suave = [p(x) for x in x_suave]
     
+    plt.plot(x_suave, y_suave, '-', label = "Polinômio de Interpolação")
+    plt.title("Gráfico do Polinômio de Interpolação de Newton")
+    plt.xlabel("Eixo X")
+    plt.ylabel("Eixo Y")
+    plt.legend()
+
     print(p(1.5))
+    plt.show()
+    
