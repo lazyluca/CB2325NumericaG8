@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 class HermiteInterpolator():
     """
     Calcula o polinômio interpolador de Hermite.
@@ -22,7 +25,7 @@ class HermiteInterpolator():
             valorx (list): Lista de valores x.
             valory (list): Lista de valores f(x).
             valory_deriv (list): Lista de valores da derivada f'(x).
-            
+
         Raises:
             ValueError: Se as listas estiverem vazias ou tiverem tamanhos diferentes,
                         ou se a lista `valorx` contiver valores duplicados.
@@ -61,7 +64,7 @@ class HermiteInterpolator():
         https://en.wikipedia.org/wiki/Divided_differences#Example.
 
         Args:
-            None. Metódo que depende somente dos atributos da classe. 
+            None. Metódo que depende somente dos atributos da classe.
 
         Returns:
             None. Modifica apenas a memória interna da classe.
@@ -131,14 +134,38 @@ class HermiteInterpolator():
         return k
 
 
-# --- Exemplos de Uso ---
+# --- Execução e representação gráfica ---
 if __name__ == "__main__":
+    # Pontos e derivadas
+    x = [0, 1]
+    y = [1, 2]
+    dy = [1, 0]
 
-  x = [0, 1]
-  y = [1, 2]
-  dy = [1, 0]
+    # Criação do interpolador
+    p1 = HermiteInterpolator(x, y, dy)
 
-  p1 = HermiteInterpolator(x, y, dy)
+    # Impressões de teste
+    print(f"H(0) = {p1(0):.4f} (Esperado: 1.0000)")
+    print(f"H(1) = {p1(1):.4f} (Esperado: 2.0000)")
 
-  print(f"H(0)   = {p1(0):.4f} (Esperado: 1.0000)")
-  print(f"H(1)   = {p1(1):.4f} (Esperado: 2.0000)")
+    # Geração de pontos suaves para o gráfico
+    x_suave = np.linspace(min(x) - 0.5, max(x) + 0.5, 400)
+    y_suave = [p1(xi) for xi in x_suave]
+
+    # Gráfico: curva e pontos originais
+    plt.figure(figsize=(8, 5))
+    plt.plot(x_suave, y_suave, '-', label="Polinômio de Hermite", color="blue")
+    plt.scatter(x, y, color="red", label="Pontos de Entrada")
+
+    # Tangentes aproximadas (derivadas fornecidas)
+    for xi, yi, dyi in zip(x, y, dy):
+        t = np.linspace(xi - 0.2, xi + 0.2, 10)
+        tangente = yi + dyi * (t - xi)
+        plt.plot(t, tangente, "--", color="orange", alpha=0.7, label=f"Tangente f'={dyi:.1f}")
+
+    plt.title("Interpolação de Hermite")
+    plt.xlabel("Eixo X")
+    plt.ylabel("Eixo Y")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
