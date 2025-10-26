@@ -17,12 +17,16 @@ class HermiteInterpolator():
     def __init__(self, valorx: list, valory: list, valory_deriv: list):
         """
         Inicializa o interpolador de Hermite.
-        """
-        if (not isinstance(valorx, list) or
-            not isinstance(valory, list) or
-            not isinstance(valory_deriv, list)):
-                raise TypeError('A função recebe três listas (x, y, y\') como entrada')
 
+        Args:
+            valorx (list): Lista de valores x.
+            valory (list): Lista de valores f(x).
+            valory_deriv (list): Lista de valores da derivada f'(x).
+            
+        Raises:
+            ValueError: Se as listas estiverem vazias ou tiverem tamanhos diferentes,
+                        ou se a lista `valorx` contiver valores duplicados.
+        """
         n = len(valorx)
         if (not valorx or
             (n != len(valory)) or
@@ -48,6 +52,12 @@ class HermiteInterpolator():
         """
         Calcula os coeficientes da tabela de diferenças divididas de Hermite como
         https://en.wikipedia.org/wiki/Divided_differences#Example.
+
+        Args:
+            None. Metódo que depende somente dos atributos da classe. 
+
+        Returns:
+            None. Modifica apenas a memória interna da classe.
         """
         n = len(self.valorx)
         m = 2 * n
@@ -89,6 +99,7 @@ class HermiteInterpolator():
         Avalia o polinômio interpolador de Hermite em um ponto x.
         Usa a forma de Newton do polinômio:
         H(x) = c0 + c1(x-z0) + c2(x-z0)(x-z1) + ...
+
         Args:
             x (float): O ponto onde o polinômio será avaliado.
 
@@ -97,6 +108,10 @@ class HermiteInterpolator():
         """
         if self._coef is None:
             self._calc_coefficients()
+
+        # Para fazer o typechecker não gritar comigo
+        assert self._coef is not None, "Coeficientes não foram calculados."
+        assert self._z_nodes is not None, "Os nós Z não foram calculados."
 
         m = len(self._coef)
         k = 0.0

@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 # Importa a sua classe do outro arquivo
-from PolynomialInterpolator import PolynomialInterpolator 
+from interpolacao.polynomial_interpolator import PolynomialInterpolator 
 
 
 @pytest.fixture
