@@ -27,11 +27,18 @@ class HermiteInterpolator():
             ValueError: Se as listas estiverem vazias ou tiverem tamanhos diferentes,
                         ou se a lista `valorx` contiver valores duplicados.
         """
+
+        if (not isinstance(valorx, list) or
+            not isinstance(valory, list) or
+            not isinstance(valory_deriv, list)):
+                raise TypeError("Não são listas")
+
         n = len(valorx)
-        if (not valorx or
-            (n != len(valory)) or
-            (n != len(valory_deriv))):
+        if not valorx:
                 raise ValueError('As listas não podem estar vazias')
+
+        if  n != len(valory) or n != len(valory_deriv):
+            raise ValueError('As listas devem ter o mesmo tamanho')
 
         # Os valores devem ser distintos
         if len(set(valorx)) != n:

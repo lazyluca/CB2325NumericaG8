@@ -1,0 +1,9 @@
+# Bytecompiled
+__pycache__/
+
+# pytest cache
+.pytest_cache/
+
+# IDE
+.vscode/
+
