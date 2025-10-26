@@ -1,5 +1,5 @@
 import numpy as np
-
+import matplotlib.pyplot as plt
 
 def aproximacao_polinomial(abscissas, ordenadas, grau):
     """
@@ -55,9 +55,34 @@ if __name__ == "__main__":
     
     x = [-2, -1, 0, 1, 2]
     y = [-3, 0, 3, 0, 9]
-
+    i = 500
+    '''
+    i = Número de pontos da curva suave
+    '''
+    
     coeficientes = aproximacao_polinomial(x, y, 4)
+
+    '''
+    Representação Gráfica:
+    Pontos de Entrada
+    '''
+    plt.plot(x, y, 'o', label = "Pontos de Entrada")
+
+    '''
+    Pontos da Curva Suave
+    '''
+    x_suave = np.linspace( np.min(x), np.max(x) , i)
+    y_suave = np.polyval( coeficientes, x_suave)
+    '''
+    polyval calcula o valor do polinômmio nos pontos x_suave 
+    '''
+
+    plt.plot(x_suave, y_suave, '-', label = "Aproximação por Mínimos Quadrados")
+    plt.xlabel("Eixo X")
+    plt.ylabel("Eixo Y")
+    plt.title("Gráfico da Aproximação por Mínimos Quadrados")
+    plt.legend()
 
     # arredonda para 2 casas decimais na impressão
     print([float(f"{coef:.2f}") for coef in coeficientes])
-
+    plt.show()
