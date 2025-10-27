@@ -94,3 +94,7 @@ if __name__=="__main__":
   g= lambda x: x**10-5
   valor2,_=raiz(g,0,4,1e-6,"bissecao")
   print(valor2)
+
+  h = lambda x: x**10-5
+  valor2,_=raiz(h,0,4,1e-6,"bissecao")
+  print(valor2)
