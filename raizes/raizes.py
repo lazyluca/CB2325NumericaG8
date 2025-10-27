@@ -3,47 +3,56 @@
 def raiz(funcao, a, b, tol, method):
 
     if method == "bissecao":
-        return Bissecao(funcao,a,b,tol)
+        return bissecao(funcao,a,b,tol)
 
     elif method == "secante":
-        return Secante(funcao,a,b,tol)
+        return secante(funcao,a,b,tol)
 
     elif method == "newton_raphson":
-        return Newton(funcao,a,b,tol)
+        return newton(funcao,a,b,tol)
 
     else:
-        #Exibir mensagem de erro: "método não reconhecido"
-        pass
+        raise ValueError("Método não reconhecido")
 
+def bissecao(funcao, a, b, tol):
 
-def Bissecao(funcao,a,b,tol):
-    f_a=funcao(a)
-    f_b=funcao(b)
-    if f_a*f_b>0:
-        raise ValueError("Erro: f(a) e f(b) têm o mesmo sinal. O método não pode garantir uma raiz no intervalo.")
-    elif f_a==0:
-        return a,[a]
-    elif f_b==0:
-        return b,[b]
+    f_a = funcao(a)
+    f_b = funcao(b)
+
+    if f_a*f_b > 0:
+        raise ValueError(
+            "Erro: f(a) e f(b) têm o mesmo sinal."
+            "O método não pode garantir uma raiz no intervalo."
+            )
+    
+    elif f_a == 0:
+        return a, [a]
+    elif f_b == 0:
+        return b, [b]
+    
     else:
-        iter=0
-        iter_para_plote=[]
-        while (b-a)/2>tol and iter<1000:
-            m=(a+b)/2
-            f_m=funcao(m)
-            iter_para_plote.append(m)
-            iter+=1
-            if f_m==0:
+        iter = 0
+        iter_para_plot = []
+
+        while (b-a)/2 > tol and iter < 1000:
+            m = (a+b)/2
+            f_m = funcao(m)
+            iter_para_plot.append(m)
+            iter += 1
+
+            if f_m == 0:
                 break
-            if f_a*f_m<0:
-                b=m
-                f_b=f_m
-            else:
-                a=m
-                f_a=f_m
-    return (a+b)/2,iter_para_plote
 
-def Secante(funcao,a,b,tol):
+            if f_a*f_m < 0:
+                b = m
+                f_b = f_m
+            else:
+                a = m
+                f_a = f_m
+
+    return (a+b)/2, iter_para_plot
+
+def secante(funcao,a,b,tol):
     iter=0
 
     while iter<10000:
@@ -65,7 +74,7 @@ def Secante(funcao,a,b,tol):
     raise RuntimeError("Número máximo de iterações atingido sem convergência.")
 
 
-def Newton(funcao,a,b,tol):
+def newton(funcao,a,b,tol):
     #Implementar o Método de Newton-Raphson
     pass
 
