@@ -90,3 +90,7 @@ if __name__=="__main__":
   f=lambda x:x**3-9*x+5
   raiz_0,_=raiz(f,a=0,b=2,tol=1e-6,method="secante")
   print(f"{raiz_0:.3f}")
+
+  g= lambda x: x**10-5
+  valor2,_=raiz(g,0,4,1e-6,"bissecao")
+  print(valor2)
