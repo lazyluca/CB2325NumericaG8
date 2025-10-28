@@ -14,7 +14,7 @@ def raiz(funcao, a=None, b=None, tol=None, f_prime=None, max_iter=1000, method=N
     else:
         raise ValueError("Método não reconhecido")
 
-def bissecao(funcao, a, b, tol,max_iter):
+def bissecao(funcao, a, b, tol, max_iter):
 
     f_a = funcao(a)
     f_b = funcao(b)
@@ -34,7 +34,7 @@ def bissecao(funcao, a, b, tol,max_iter):
         iter = 0
         iter_para_plot = []
 
-        while (b-a)/2 > tol and iter < 1000:
+        while (b-a)/2 > tol and iter < max_iter:
             m = (a+b)/2
             f_m = funcao(m)
             iter_para_plot.append(m)
@@ -49,56 +49,58 @@ def bissecao(funcao, a, b, tol,max_iter):
             else:
                 a = m
                 f_a = f_m
+        if (b-a)/2 > tol and iter == max_iter:
+            raise RuntimeError("Número máximo de iterações atingido sem convergência.")
+        else: 
+            return (a+b)/2, iter_para_plot
 
-    return (a+b)/2, iter_para_plot
+def secante(funcao, a, b, tol, max_iter):
+    iter = 0
+    iter_para_plot = []
 
-def secante(funcao,a,b,tol,max_iter):
-    iter=0
-    iter_para_plot=[]
+    while iter < max_iter:
 
-    while iter<max_iter:
+        f_a = funcao(a)
+        f_b = funcao(b)
 
-        f_a=funcao(a)
-        f_b=funcao(b)
-
-        if(f_a-f_b==0):
+        if(f_a - f_b == 0):
             raise ZeroDivisionError("Erro: f(a) - f(b) = 0. Divisão por zero.")
         
-        c=b-f_b*((b-a)/(f_b-f_a))
-        f_c=funcao(c)
+        c = b - f_b*((b-a) / (f_b-f_a))
+        f_c = funcao(c)
         iter_para_plot.append(c)
 
-        if(abs(c-b)<tol or abs(f_c)<tol):
-            return c,iter_para_plot
-        a=b
-        b=c
-        iter+=1
+        if(abs(c-b) < tol or abs(f_c) < tol):
+            return c, iter_para_plot
+        a = b
+        b = c
+        iter += 1
     raise RuntimeError("Número máximo de iterações atingido sem convergência.")
 
 
 def newton(funcao, a, tol, f_prime, max_iter):
-    iter=0
-    iter_para_plot=[]
+    iter = 0
+    iter_para_plot = []
 
-    while iter<max_iter:
-        f_a=funcao(a)
+    while iter < max_iter:
+        f_a = funcao(a)
 
-        if(f_prime==None):
+        if(f_prime == None):
             pass
         else:
-            f_prime_a=f_prime(a)
+            f_prime_a = f_prime(a)
 
-        if f_prime_a==0:
+        if f_prime_a == 0:
             raise ZeroDivisionError("Erro: derivada zero f_prime(a) = 0. Divisão por zero.")
         
-        c=a-f_a/f_prime_a
+        c = a - f_a/f_prime_a
         iter_para_plot.append(c)
         
-        if(abs(c-a)<tol):
-            return c,iter_para_plot
+        if(abs(c-a) < tol):
+            return c, iter_para_plot
         
-        a=c
-        iter+=1
+        a = c
+        iter += 1
     
     raise RuntimeError("Número máximo de iterações atingido sem convergência.")
 
