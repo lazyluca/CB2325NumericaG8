@@ -1,9 +1,9 @@
 import numpy as np
-import matplotlib.plotly as plt
+import matplotlib.pyplot as plt
 
 #OBSERVAÇÃO: Por enquanto sem arredondamento de casas decimais
 
-class Interpolador_Linear_por_Partes():
+class Interpolação_Linear_por_Partes():
 
     def __init__(self, lista_x: list, lista_y:list):
 
@@ -27,13 +27,13 @@ class Interpolador_Linear_por_Partes():
           
         """
                           
-    def interpolar_x(self, x):
+    def __call__(self, x):
   
         if x<self.x[0] or x>self.x[-1]:
             return ValueError('Erro de Extrapolação: a abscissa a ser avaliada está fora do intrevalo de interpolação.')
         else:
+            i = 0
             while True:
-                i = 0
                 if self.x[i]<=x<self.x[i+1]: 
                     break
                 i+=1
@@ -42,11 +42,14 @@ class Interpolador_Linear_por_Partes():
             coef_linear = self.y[i] - self.x[i]*coef_angular
       
             return coef_angular*x+coef_linear
-        
 
-    
-        
-        
+#TESTE:
+
+x = [1,2,3,5]
+y = [2,4,8,32]
+
+interpolador = Interpolação_Linear_por_Partes(x,y)
+print(interpolador(4)) #saída esperada: 20.0
               
             
     
