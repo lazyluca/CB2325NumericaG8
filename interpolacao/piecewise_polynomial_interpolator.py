@@ -94,27 +94,29 @@ class Interpolação_Linear_por_Partes():
 
         return y
 
-#TESTES
+#TESTES:
 
-#1 - Teste do interpolador 'call':
+if __name__ == '__main__':
 
-x = [1,2,3,5]
-y = [2,4,8,32]
-interpolador_1 = Interpolação_Linear_por_Partes(x,y)
+    #1 - Teste do interpolador 'call':
 
-print(interpolador_1(4)) #saída esperada: 20.0
+    x = [1,2,3,5]
+    y = [2,4,8,32]
+    interpolador_1 = Interpolação_Linear_por_Partes(x,y)
 
-#2 - Teste de 'calcular_retas' e 'interpolar_muitos_pontos':
+    print(interpolador_1(4)) #saída esperada: 20.0
 
-a = [2,3,4]
-b = [4,9,16]
-interpolador_2 = Interpolação_Linear_por_Partes(a,b)
+    #2 - Teste de 'calcular_retas' e 'interpolar_muitos_pontos':
 
-interpolador_2.calcular_retas()
+    a = [2,3,4]
+    b = [4,9,16]
+    interpolador_2 = Interpolação_Linear_por_Partes(a,b)
 
-pontos_interpolados = []
-for i in range(40):
-    k=2+i/20
-    pontos_interpolados.append((k,float(interpolador_2.interpolar_muitos_pontos(k))))
+    interpolador_2.calcular_retas()
 
-print(pontos_interpolados) #saída esperada: lista com os pontos interpolados
+    pontos_interpolados = []
+    for i in range(40):
+        k=2+i/20
+        pontos_interpolados.append((k,float(interpolador_2.interpolar_muitos_pontos(k))))
+
+    print(pontos_interpolados) #saída esperada: lista com os pontos interpolados
