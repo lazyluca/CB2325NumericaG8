@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from kahan import soma_kahan
 
-def integral(funcao, a, b, n = 100):
+def integral(funcao, a, b, n = 100, mostrar_grafico = False, precisao = None):
     '''
     Integra numericamente uma função dada, utilizando uma aproximação trapezoidal.
 
@@ -10,19 +10,26 @@ def integral(funcao, a, b, n = 100):
         funcao (callable): Expressão dada para a função.
         a (float): Limite inferior da integral.
         b (float): Limite superior da integral.
-        n (int): Número de divisões do intervalo de integração.
+        n (int): Número de divisões do intervalo de integração. Valor padrão é 100.
+        mostrar_grafico (bool, optional): Define se deve gerar o gráfico ou não. Valor padrão é False.
+        precisao (int, optional): Número de casas decimais no resultado retornado.
 
     Returns:
-        float: Valor numérico obtido para a integral.
+        float: Valor numérico obtido para a integral arredondado de acordo com a precisão, caso fornecida.
     '''
-
     vals_x = np.linspace(a, b, n+1)
     y = [funcao(x) for x in vals_x]
     delta = (b-a)/n
     soma_intermediaria = soma_kahan(y[1:-1])
     valor_integral = (delta/2)*soma_kahan([y[0], 2*soma_intermediaria, y[-1]])
 
-    return float(f"{valor_integral:.4g}")
+    if mostrar_grafico:
+        grafico(funcao, a, b, s=300, area=valor_integral, n=n)
+
+    if precisao is not None:
+        return round(valor_integral, precisao)
+    else:
+        return valor_integral
 
 def grafico(funcao, a , b , s, area, n=20):
     ''' dados curva suave '''
@@ -48,14 +55,12 @@ def grafico(funcao, a , b , s, area, n=20):
 
     return plt.show()
 
-
 funcao = lambda x: np.sin(x)
 a = 0
 b = np.pi
 '''número de pontos para a curva suave'''
-s = 100 
+# s = 100 
 ''' n = número de partições de trapézios'''
-area = integral(funcao, a, b, n=100)
+area = integral(funcao, a, b, n=10, mostrar_grafico=True)
 print(area)
-grafico(funcao, a, b, s, area, n=20)
-
+# grafico(funcao, a, b, s, area, n=20)
