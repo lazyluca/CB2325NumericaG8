@@ -1,7 +1,26 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def integral(funcao, a, b, n=100):
+def soma_kahan(lista):
+    '''
+    Aplica o algoritmo de soma de Kahan para somar todos os elementos de uma lista, a fim de evitar erros de ponto flutuante.
+
+    Args:
+        lista (list): Lista com os números a serem somados.
+
+    Returns:
+        float: Valor numérico obtido para a soma.
+    '''
+    soma = 0.0
+    c = 0.0                     # Variável de compensação
+    for valor in lista:
+        y = valor - c
+        t = soma + y
+        c = (t - soma) - y
+        soma = t
+    return soma
+
+def integral(funcao, a, b, n = 100):
     '''
     Integra numericamente uma função dada, utilizando uma aproximação trapezoidal.
 
@@ -18,7 +37,8 @@ def integral(funcao, a, b, n=100):
     vals_x = np.linspace(a, b, n+1)
     y = [funcao(x) for x in vals_x]
     delta = (b-a)/n
-    valor_integral = (delta/2)*(y[0] + 2*np.sum(y[1:-1]) + y[-1])
+    soma_intermediaria = soma_kahan(y[1:-1])
+    valor_integral = (delta/2)*soma_kahan([y[0], 2*soma_intermediaria, y[-1]])
 
     return float(f"{valor_integral:.4g}")
 
