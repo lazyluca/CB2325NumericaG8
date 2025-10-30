@@ -1,6 +1,6 @@
 #Implementação do método das raízes
 
-def raiz(funcao, a=None, b=None, tol=None, f_prime=None, max_iter=1000, method=None):
+def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method=None):
     ''' 
     Função principal para encontrar raizes de uma equação f(x)=0.
 
@@ -14,12 +14,13 @@ def raiz(funcao, a=None, b=None, tol=None, f_prime=None, max_iter=1000, method=N
         method (str): método a ser utilizado.
     
     Returns:
-        raiz(float): raiz encontrada.
+        tuple (float, list): raiz encontrada e lista de iterações.
     
     Raises:
         ValueError: Se o método não for reconhecido.
 
     '''
+    
     if method == "bissecao":
         return bissecao(funcao, a, b, tol,max_iter)
 
@@ -47,7 +48,7 @@ def bissecao(funcao, a, b, tol, max_iter):
         max_iter (int): número máximo de iterações do método.
     
     Returns:
-        tuple: raiz encontrada e lista de iterações.
+        tuple (float, list): raiz encontrada e lista de iterações.
     
     Raises:
         ValueError: Se f(a) e f(b) têm o mesmo sinal.
@@ -95,6 +96,28 @@ def bissecao(funcao, a, b, tol, max_iter):
             return (a+b)/2, iter_para_plot
 
 def secante(funcao, a, b, tol, max_iter):
+    '''
+    Encontra a raiz de uma equação f(x)=0 usando o método da secante.
+
+    Este método requer duas estimativas iniciais a e b para o valor da
+    raiz, tal que f(a) é diferente de f(b).
+
+    Args:
+        funcao (callable): expressão dada para a função f(x).
+        a (float): aproximação inicial para a raiz
+        b (float): aproximação inicial para a raiz
+        tol (float): tolerância para a convergência do método.
+        max_iter (int): número máximo de iterações do método.
+    
+    Returns:
+        tuple (float, list): raiz encontrada e lista de iterações.
+    
+    Raises:
+        ZeroDivisionError: Se f(a) e f(b) são iguais.
+        RuntimeError: Se o número máximo de iterações
+                      é atingido sem convergência.
+    '''
+
     iter = 0
     iter_para_plot = []
 
@@ -119,6 +142,28 @@ def secante(funcao, a, b, tol, max_iter):
 
 
 def newton(funcao, a, tol, f_prime, max_iter):
+    '''
+    Encontra a raiz de uma equação f(x)=0 usando o método de newton-raphson.
+
+    Este método requer uma estimativa inicial a para o valor da raiz e a 
+    derivada f_prime da função
+
+    Args:
+        funcao (callable): expressão dada para a função f(x).
+        a (float): aproximação inicial para a raiz
+        f_prime (callable): expressão dada para a função f'(x).
+        tol (float): tolerância para a convergência do método.
+        max_iter (int): número máximo de iterações do método.
+    
+    Returns:
+        tuple: raiz encontrada e lista de iterações.
+    
+    Raises:
+        ZeroDivisionError: Se f'(a) = 0.
+        RuntimeError: Se o número máximo de iterações
+                      é atingido sem convergência.
+    '''
+
     iter = 0
     iter_para_plot = []
 
