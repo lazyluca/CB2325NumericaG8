@@ -126,7 +126,10 @@ def newton(funcao, a, tol, f_prime, max_iter):
         f_a = funcao(a)
 
         if (f_prime == None):
-            pass
+            h=tol
+            f_prime=lambda x: (funcao(a+h)-f_a)/h
+            f_prime_a=f_prime(a)
+
         else:
             f_prime_a = f_prime(a)
 
@@ -165,4 +168,8 @@ if __name__=="__main__":
   h = lambda x: x**10-5
   h_prime = lambda x: 10*x**9
   valor2=raiz(h,2,tol=1e-6,f_prime=h_prime, method="newton_raphson")
+  print(valor2)
+
+  h = lambda x: x**10-5
+  valor2=raiz(h,2,tol=1e-6, method="newton_raphson")
   print(valor2)
