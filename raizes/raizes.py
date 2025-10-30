@@ -1,7 +1,7 @@
 #Implementação do método das raízes
 
 def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method=None):
-    ''' 
+    """
     Função principal para encontrar raizes de uma equação f(x)=0.
 
     Args:
@@ -18,8 +18,8 @@ def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method=N
     
     Raises:
         ValueError: Se o método não for reconhecido.
-
-    '''
+    """
+    
     
     if method == "bissecao":
         return bissecao(funcao, a, b, tol,max_iter)
@@ -34,7 +34,7 @@ def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method=N
         raise ValueError("Método não reconhecido")
 
 def bissecao(funcao, a, b, tol, max_iter):
-    '''
+    """
     Encontra a raiz de uma equação f(x)=0 usando o método da bisseção.
 
     Este método requer um intervalo inicial [a, b] tal que f(a) e f(b)
@@ -54,8 +54,7 @@ def bissecao(funcao, a, b, tol, max_iter):
         ValueError: Se f(a) e f(b) têm o mesmo sinal.
         RuntimeError: Se o número máximo de iterações
                       é atingido sem convergência.
-
-    '''
+    """
 
     f_a = funcao(a)
     f_b = funcao(b)
@@ -96,7 +95,7 @@ def bissecao(funcao, a, b, tol, max_iter):
             return (a+b)/2, iter_para_plot
 
 def secante(funcao, a, b, tol, max_iter):
-    '''
+    """
     Encontra a raiz de uma equação f(x)=0 usando o método da secante.
 
     Este método requer duas estimativas iniciais a e b para o valor da
@@ -116,7 +115,7 @@ def secante(funcao, a, b, tol, max_iter):
         ZeroDivisionError: Se f(a) e f(b) são iguais.
         RuntimeError: Se o número máximo de iterações
                       é atingido sem convergência.
-    '''
+    """
 
     iter = 0
     iter_para_plot = []
@@ -142,7 +141,7 @@ def secante(funcao, a, b, tol, max_iter):
 
 
 def newton(funcao, a, tol, f_prime, max_iter):
-    '''
+    """
     Encontra a raiz de uma equação f(x)=0 usando o método de newton-raphson.
 
     Este método requer uma estimativa inicial a para o valor da raiz e a 
@@ -162,7 +161,7 @@ def newton(funcao, a, tol, f_prime, max_iter):
         ZeroDivisionError: Se f'(a) = 0.
         RuntimeError: Se o número máximo de iterações
                       é atingido sem convergência.
-    '''
+    """
 
     iter = 0
     iter_para_plot = []
@@ -191,6 +190,8 @@ def newton(funcao, a, tol, f_prime, max_iter):
         iter += 1
     
     raise RuntimeError("Número máximo de iterações atingido sem convergência.")
+
+
 
 #Testes temporários
 if __name__=="__main__":
