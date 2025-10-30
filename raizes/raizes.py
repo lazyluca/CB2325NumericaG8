@@ -1,7 +1,25 @@
 #Implementação do método das raízes
 
 def raiz(funcao, a=None, b=None, tol=None, f_prime=None, max_iter=1000, method=None):
+    ''' 
+    Função principal para encontrar raizes de uma equação f(x)=0.
 
+    Args:
+        funcao (callable): expressão dada para a função f(x)
+        a (float): limite inferior do intervalo de busca.
+        b (float): limite superior do intervalo de busca.
+        tol (float): tolerância para a convergência do método.
+        f_prime (callable): derivada da função f(x).
+        max_iter (int): número máximo de iterações do método.
+        method (str): método a ser utilizado.
+    
+    Returns:
+        raiz(float): raiz encontrada.
+    
+    Raises:
+        ValueError: Se o método não for reconhecido.
+
+    '''
     if method == "bissecao":
         return bissecao(funcao, a, b, tol,max_iter)
 
@@ -15,6 +33,28 @@ def raiz(funcao, a=None, b=None, tol=None, f_prime=None, max_iter=1000, method=N
         raise ValueError("Método não reconhecido")
 
 def bissecao(funcao, a, b, tol, max_iter):
+    '''
+    Encontra a raiz de uma equação f(x)=0 usando o método da bisseção.
+
+    Este método requer um intervalo inicial [a, b] tal que f(a) e f(b)
+    tenham sinais opostos (Teorema de Bolzano).
+
+    Args:
+        funcao (callable): expressão dada para a função f(x).
+        a (float): limite inferior do intervalo de busca.
+        b (float): limite superior do intervalo de busca.
+        tol (float): tolerância para a convergência do método.
+        max_iter (int): número máximo de iterações do método.
+    
+    Returns:
+        tuple: raiz encontrada e lista de iterações.
+    
+    Raises:
+        ValueError: Se f(a) e f(b) têm o mesmo sinal.
+        RuntimeError: Se o número máximo de iterações
+                      é atingido sem convergência.
+
+    '''
 
     f_a = funcao(a)
     f_b = funcao(b)
@@ -63,14 +103,14 @@ def secante(funcao, a, b, tol, max_iter):
         f_a = funcao(a)
         f_b = funcao(b)
 
-        if(f_a - f_b == 0):
+        if (f_a - f_b == 0):
             raise ZeroDivisionError("Erro: f(a) - f(b) = 0. Divisão por zero.")
         
         c = b - f_b*((b-a) / (f_b-f_a))
         f_c = funcao(c)
         iter_para_plot.append(c)
 
-        if(abs(c-b) < tol or abs(f_c) < tol):
+        if (abs(c-b) < tol or abs(f_c) < tol):
             return c, iter_para_plot
         a = b
         b = c
@@ -85,7 +125,7 @@ def newton(funcao, a, tol, f_prime, max_iter):
     while iter < max_iter:
         f_a = funcao(a)
 
-        if(f_prime == None):
+        if (f_prime == None):
             pass
         else:
             f_prime_a = f_prime(a)
@@ -96,7 +136,7 @@ def newton(funcao, a, tol, f_prime, max_iter):
         c = a - f_a/f_prime_a
         iter_para_plot.append(c)
         
-        if(abs(c-a) < tol):
+        if (abs(c-a) < tol):
             return c, iter_para_plot
         
         a = c
