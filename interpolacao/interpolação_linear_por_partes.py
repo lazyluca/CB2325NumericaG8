@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 #SUGESTÃO: Receber uma lista não ordenada de pontos e ordená-los.
 
-class InterpolaçãoLinearPorPartes():
+class InterpolaçãoLinearPorPartes:
     
     '''
     Cria um objeto para ser interpolado por partes.
@@ -126,7 +126,7 @@ class InterpolaçãoLinearPorPartes():
         '''
 
         if x<self.x[0] or x>self.x[-1]:
-            return ValueError('Erro de Extrapolação: a abscissa a ser avaliada está fora do intrevalo de interpolação.')
+            raise ValueError('Erro de Extrapolação: a abscissa a ser avaliada está fora do intrevalo de interpolação.')
         elif x == self.x[-1]:
             return self.y[-1]
         else:    
