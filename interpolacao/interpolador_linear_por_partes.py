@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 #SUGESTÃO: Receber uma lista não ordenada de pontos e ordená-los.
 
-class InterpolaçãoLinearPorPartes:
+class InterpolacaoLinearPorPartes:
     
     '''
     Cria um objeto para ser interpolado por partes.
@@ -148,7 +148,7 @@ if __name__ == '__main__':
 
     x = [1,2,3,5]
     y = [2,4,8,32]
-    interpolador_1 = InterpolaçãoLinearPorPartes(x,y)
+    interpolador_1 = InterpolacaoLinearPorPartes(x,y)
 
     print(interpolador_1(4)) #saída esperada: 20.0
 
@@ -156,7 +156,7 @@ if __name__ == '__main__':
 
     a = [2,3,4]
     b = [4,9,16]
-    interpolador_2 = InterpolaçãoLinearPorPartes(a,b)
+    interpolador_2 = InterpolacaoLinearPorPartes(a,b)
 
     interpolador_2.calcular_retas()
 

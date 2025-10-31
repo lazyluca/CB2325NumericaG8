@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from interpolação_linear_por_partes import InterpolaçãoLinearPorPartes
+from interpolacao.interpolador_linear_por_partes import InterpolacaoLinearPorPartes
 
 #Dados para o Teste 1: 
 X_1 = [1,2,3,4,5]
@@ -20,18 +20,18 @@ Y_3 = [2,4,8,32]
 def test_listas_de_tamanhos_diferentes():
 
     with pytest.raises(ValueError, match='As listas devem ter a mesma quantidade de elementos.'):
-        objeto1 = InterpolaçãoLinearPorPartes(X_1,Y_1)
+        objeto1 = InterpolacaoLinearPorPartes(X_1,Y_1)
 
 #Teste 2 - Erro de inicialização do objeto com a lista x com valores repetidos:
 
 def test_abscissas_repetidas():
 
     with pytest.raises(ValueError, match='A lista de abscissas possui valores repetidos.'):
-        objeto2 = InterpolaçãoLinearPorPartes(X_2,Y_2)
+        objeto2 = InterpolacaoLinearPorPartes(X_2,Y_2)
 
 #Teste 3 - Função '__call__':
 
-objeto3 = InterpolaçãoLinearPorPartes(X_3,Y_3)
+objeto3 = InterpolacaoLinearPorPartes(X_3,Y_3)
 assert objeto3(4) == pytest.approx(20.0)
 
 #Teste 4 - Função 'calcular_retas':
