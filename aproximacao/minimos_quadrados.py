@@ -9,7 +9,13 @@ def aproximacao_polinomial(abscissas, ordenadas, grau):
         abscissas (list ou array): coordenadas x
         ordenadas (list ou array): coordenadas y
         grau (int): grau do polinômio
-
+    
+    Raises:
+        ValueError: Se o grau fornecido não for um número inteiro
+        ValueError: Se o grau fornecido for menor que 1
+        ValueError: Se as abicissas e as ordenadas tiverem um número diferente de elementos
+        ValueError: Se o grau fornecido for maior ou igual à quantidade de abcissas e ordenadas
+        
     Retorna:
         list: coeficientes do polinômio aproximado, do maior para o menor grau
     """
@@ -48,7 +54,7 @@ def aproximacao_polinomial(abscissas, ordenadas, grau):
     y_array = np.array(y)
     beta = np.linalg.solve(X_array.T @ X_array, X_array.T @ y_array)
 
-    # arredonda para 10 casas decimais
+    # Transforma beta em uma lista padrão do python e arredonda para 10 casas decimais
     return [float(f"{coef:.10f}") for coef in beta]
 
 if __name__ == "__main__":
