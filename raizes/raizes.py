@@ -19,16 +19,19 @@ def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method=N
     Raises:
         ValueError: Se o método não for reconhecido.
     """
-    
-    
+    if method is None:
+        print("Método não especificado, raiz encontrada utilizando "
+              "método padrão: Secante ")
+        return secante(funcao, a, b, tol, max_iter)
+
     if method == "bissecao":
-        return bissecao(funcao, a, b, tol,max_iter)
+        return bissecao(funcao, a, b, tol, max_iter)
 
     elif method == "secante":
-        return secante(funcao,a,b,tol,max_iter)
+        return secante(funcao, a, b, tol, max_iter)
 
     elif method == "newton_raphson":
-        return newton(funcao,a,tol,f_prime, max_iter)
+        return newton(funcao, a, tol, f_prime, max_iter)
 
     else:
         raise ValueError("Método não reconhecido")
@@ -119,11 +122,10 @@ def secante(funcao, a, b, tol, max_iter):
 
     iter = 0
     iter_para_plot = []
+    f_a = funcao(a)
+    f_b = funcao(b)
 
     while iter < max_iter:
-
-        f_a = funcao(a)
-        f_b = funcao(b)
 
         if (f_a - f_b == 0):
             raise ZeroDivisionError("Erro: f(a) - f(b) = 0. Divisão por zero.")
@@ -135,7 +137,9 @@ def secante(funcao, a, b, tol, max_iter):
         if (abs(c-b) < tol or abs(f_c) < tol):
             return c, iter_para_plot
         a = b
+        f_a = f_b
         b = c
+        f_b = f_c
         iter += 1
     raise RuntimeError("Número máximo de iterações atingido sem convergência.")
 
@@ -195,27 +199,24 @@ def newton(funcao, a, tol, f_prime, max_iter):
 
 #Testes temporários
 if __name__=="__main__":
-  f=lambda x: x**2-2
-  valor1,_=raiz(f,0,2,1e-6,method="bissecao")
+  
+  f=lambda x: x**2 - 2
+  valor1,_ = raiz(f, 0, 2, 1e-6) #teste sem especificar metodo
   print(valor1)
 
-  fi= lambda x: x**2-4
-  valor2,_=raiz(fi,0,4,1e-6,method="bissecao")
-  print(valor2)
-
-  f=lambda x:x**3-9*x+5
-  raiz_0,_=raiz(f,a=0,b=2,tol=1e-6,method="secante")
+  f=lambda x: x**3 - 9*x + 5
+  raiz_0,_= raiz(f, a=0, b=2, tol=1e-6, method="secante")
   print(f"{raiz_0:.3f}")
 
-  g= lambda x: x**10-5
-  valor2,_=raiz(g,0,4,1e-6,method="bissecao")
+  g= lambda x: x**10 - 5
+  valor2,_ = raiz(g, 0, 4, 1e-6, method="bissecao")
   print(valor2)
 
-  h = lambda x: x**10-5
-  h_prime = lambda x: 10*x**9
-  valor2=raiz(h,2,tol=1e-6,f_prime=h_prime, method="newton_raphson")
+  h = lambda x: x**10 - 5
+  h_prime = lambda x: 10 * x**9
+  valor2,_=raiz(h,2,tol=1e-6,f_prime=h_prime, method="newton_raphson")
   print(valor2)
 
-  h = lambda x: x**10-5
-  valor2=raiz(h,2,tol=1e-6, method="newton_raphson")
+  h = lambda x: x**10 - 5
+  valor2,_=raiz(h,2,tol=1e-6, method="newton_raphson")
   print(valor2)
