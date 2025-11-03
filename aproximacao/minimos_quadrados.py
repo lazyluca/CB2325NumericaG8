@@ -51,7 +51,7 @@ def aproximacao_polinomial(abscissas, ordenadas, grau):
         X.append(linha)
 
     X_array = np.array(X)
-    y_array = np.array(y)
+    y_array = np.array(ordenadas)
     beta = np.linalg.solve(X_array.T @ X_array, X_array.T @ y_array)
 
     # Transforma beta em uma lista padrão do python e arredonda para 10 casas decimais
