@@ -31,7 +31,7 @@ def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method=N
         return secante(funcao, a, b, tol, max_iter)
 
     elif method == "newton_raphson":
-        return newton(funcao, a, tol, f_prime, max_iter)
+        return newton(funcao, a, f_prime,tol, max_iter)
 
     else:
         raise ValueError("Método não reconhecido")
@@ -144,7 +144,7 @@ def secante(funcao, a, b, tol, max_iter):
     raise RuntimeError("Número máximo de iterações atingido sem convergência.")
 
 
-def newton(funcao, a, tol, f_prime, max_iter):
+def newton(funcao, a, f_prime, tol, max_iter):
     """
     Encontra a raiz de uma equação f(x)=0 usando o método de newton-raphson.
 
@@ -170,16 +170,13 @@ def newton(funcao, a, tol, f_prime, max_iter):
     iter = 0
     iter_para_plot = []
 
+    if (f_prime == None):
+            h=tol
+            f_prime=lambda x: (funcao(x+h)-funcao(x))/h
+            
     while iter < max_iter:
         f_a = funcao(a)
-
-        if (f_prime == None):
-            h=tol
-            f_prime=lambda x: (funcao(a+h)-f_a)/h
-            f_prime_a=f_prime(a)
-
-        else:
-            f_prime_a = f_prime(a)
+        f_prime_a=f_prime(a)
 
         if f_prime_a == 0:
             raise ZeroDivisionError("Erro: derivada zero f_prime(a) = 0. Divisão por zero.")
@@ -187,7 +184,7 @@ def newton(funcao, a, tol, f_prime, max_iter):
         c = a - f_a/f_prime_a
         iter_para_plot.append(c)
         
-        if (abs(c-a) < tol):
+        if (abs(c-a) < tol and abs(funcao(c))<tol):
             return c, iter_para_plot
         
         a = c
@@ -214,7 +211,7 @@ if __name__=="__main__":
 
   h = lambda x: x**10 - 5
   h_prime = lambda x: 10 * x**9
-  valor2,_=raiz(h,2,tol=1e-6,f_prime=h_prime, method="newton_raphson")
+  valor2,_=raiz(h,2,f_prime=h_prime,tol=1e-6, method="newton_raphson")
   print(valor2)
 
   h = lambda x: x**10 - 5
