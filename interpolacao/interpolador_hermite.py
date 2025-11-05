@@ -142,7 +142,7 @@ if __name__ == "__main__":
     dy = [1, 0]
 
     # Criação do interpolador
-    p1 = InterpolatorHermite(x, y, dy)
+    p1 = InterpoladorHermite(x, y, dy)
 
     # Impressões de teste
     print(f"H(0) = {p1(0):.4f} (Esperado: 1.0000)")
