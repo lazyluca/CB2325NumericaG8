@@ -21,7 +21,7 @@ Para executar este projeto, você precisará de:
 
 * Python 3.9+
 * NumPy
-* Matplotlib (Opcional, se houver gráficos)
+* Matplotlib
 
 ---
 
