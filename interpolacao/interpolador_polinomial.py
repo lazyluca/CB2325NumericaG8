@@ -106,37 +106,62 @@ class PolynomialInterpolator:
         return k
 
 
+    def plot_polynomial(self, n_suave=500):
+                """
+                Gera um gráfico do polinômio de interpolação e dos pontos de entrada.
+    
+                Args:
+                    n_suave (int, optional): Número de pontos para a curva suave.
+                                            Padrão é 500.
+                """
+    
+                plt.style.use('seaborn-v0_8-darkgrid') 
+                
+                x_min = np.min(self.valores_x)
+                x_max = np.max(self.valores_x)
+                x_suave = np.linspace(x_min, x_max, n_suave)
+                y_suave = [self(x) for x in x_suave]
+     
+                plt.plot(x_suave, y_suave, 
+                        '-', 
+                        label="Polinômio de Interpolação", 
+                        color='orange', 
+                        linewidth=2,
+                        zorder=2)
+     
+                plt.plot(self.valores_x, self.valores_y, 
+                        'o', 
+                        label="Pontos de Entrada", 
+                        color='blue', 
+                        markersize=7, 
+                        markeredgecolor='black',
+                        zorder=3)
+                
+                plt.title("Gráfico do Polinômio de Interpolação de Newton", 
+                        fontsize=14, fontweight='bold')
+                plt.xlabel("Eixo X", fontsize=12)
+                plt.ylabel("Eixo Y", fontsize=12)
+                plt.legend(loc='best', frameon=True, shadow=True)
+                plt.grid(True, linestyle='--', alpha=0.6)
+                
+                plt.tight_layout()
+                plt.show()
+
+
 if __name__ == "__main__":
     """
     Bloco de teste para executar o código.
     """
     vetor_x = [0, 1, 2, 3]
     vetor_y = [1, 2, 0, 4]
-    '''
-    i = Número de pontos da curva suave
-    '''
-    i = 500
+    
+    n_suave = 500 
     
     p = PolynomialInterpolator(vetor_x, vetor_y)
 
-    '''
-    Representação Gráfica:
-    Pontos de Entrada
-    '''
-    plt.plot( vetor_x , vetor_y , 'o' , label = "Pontos de Entrada")
- 
-    '''
-    Pontos da Curva Suave
-    '''
-    x_suave = np.linspace(np.min(vetor_x) , np.max(vetor_x) , i)
-    y_suave = [p(x) for x in x_suave]
-    
-    plt.plot(x_suave, y_suave, '-', label = "Polinômio de Interpolação")
-    plt.title("Gráfico do Polinômio de Interpolação de Newton")
-    plt.xlabel("Eixo X")
-    plt.ylabel("Eixo Y")
-    plt.legend()
+    ponto_teste = 1.5
+    resultado = p(ponto_teste)
+    print(f"P({ponto_teste}) = {resultado}")
 
-    print(p(1.5))
-    plt.show()
+    p.plot_polynomial(n_suave)
     
