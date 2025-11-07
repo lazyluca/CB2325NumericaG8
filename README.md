@@ -51,4 +51,19 @@ print(f"H(0) = {polinomio(0):.4f}")
 print(f"H(1) = {polinomio(1):.4f}")
 print(f"H(0.5) = {polinomio(0.5):.4f}")
 ```
+### Raízes
+Aqui estão exemplos de como usar os métodos raízes de funções.
 
+#### Método da Bisseção 
+
+```python
+#1. defina os dados de entrada
+def f(x):
+    return x**2 - 2
+
+#2. Utilizar a função nos dados de entrada
+raiz0,_ = raiz(f, a=0, b=2, tol=1e-6, method="bissecao")
+
+#3. Saída esperada
+print(raiz0)
+```
