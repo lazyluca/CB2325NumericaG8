@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 def grafico(funcao, a, b, s, area, n=20):
     """
     Gera e exibe um gráfico da função e da área aproximada da integral.
