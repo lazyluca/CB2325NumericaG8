@@ -1,6 +1,8 @@
 #Implementação do método das raízes
 
-def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method=None):
+from raizes.grafico_raizes import grafico
+
+def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method="secante", mostrar_grafico=False):
     """
     Função principal para encontrar raizes de uma equação f(x)=0.
 
@@ -19,20 +21,28 @@ def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method=N
     Raises:
         ValueError: Se o método não for reconhecido.
     """
-    if method is None:
-        print("Método não especificado, raiz encontrada utilizando "
-              "método padrão: Secante ")
-        return secante(funcao, a, b, tol, max_iter)
 
     if method == "bissecao":
-        return bissecao(funcao, a, b, tol, max_iter)
+        raiz,lista_iteracoes=bissecao(funcao, a, b, tol, max_iter)
+        if(mostrar_grafico==True):
+            #Implementar chamada da função de plotagem
+            pass
+        return raiz,lista_iteracoes
 
     elif method == "secante":
-        return secante(funcao, a, b, tol, max_iter)
+        raiz,lista_iteracoes=secante(funcao, a, b, tol, max_iter)
+        if(mostrar_grafico==True):
+            #Implementar chamada da função de plotagem
+            pass
+        return raiz,lista_iteracoes
 
     elif method == "newton_raphson":
-        return newton(funcao, a, f_prime,tol, max_iter)
-
+        raiz,lista_iteracoes=newton(funcao, a, f_prime,tol, max_iter)
+        if(mostrar_grafico==True):
+            #Implementar chamada da função de plotagem
+            pass
+        return raiz,lista_iteracoes
+    
     else:
         raise ValueError("Método não reconhecido")
 
