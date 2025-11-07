@@ -9,10 +9,14 @@ Este repositório contém implementações de métodos de interpolação e cálc
 Este projeto implementa as seguintes funcionalidades:
 
 * **Interpolação:**
-    * Interpolação Polinomial (Método de Lagrange)
-    * Interpolação de Hermite
-    * Interpolação Linear por partes
+    * Interpolação Polinomial (Método de Lagrange);
+    * Interpolação de Hermite;
+    * Interpolação Linear por partes.
 
+* **Raízes de Funções:**
+    * Método da Bisseção;
+    * Método da Secante;
+    * Método de Newton-Raphson.
 ---
 
 ## 📋 Pré-requisitos
