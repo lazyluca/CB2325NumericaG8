@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from interpolacao.interpolador_linear_por_partes import InterpolacaoLinearPorPartes
+from cb2325numericag8.interpolacao.interpolador_linear_por_partes import InterpolacaoLinearPorPartes
 
 #Dados para o Teste 1: 
 X_1 = [1,2,3,4,5]

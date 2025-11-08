@@ -1,14 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
-#SUGESTÃO: Arredondamento de casas decimais
-
-#SUGESTÃO: Fazer um map para receber uma lista de pontos (tuplas) e separar em dois arrays de coordenadas x e y 
-
-#SUGESTÃO: Fazer uma função para adicionar pontos base (dados) a um interpolador. AKA criar nova array 
-
-#SUGESTÃO: Receber uma lista não ordenada de pontos e ordená-los.
-
 class InterpolacaoLinearPorPartes:
     
     '''
@@ -140,55 +131,29 @@ class InterpolacaoLinearPorPartes:
 
         return y
 
-    # 🔹 Função gráfica integrada diretamente à classe
-    def plotar(self, pontos_interpolados=None, titulo="Interpolação Linear por Partes"):
-        """
-        Exibe o gráfico da interpolação linear por partes com matplotlib.
+#TESTES:
 
-        Args:
-            pontos_interpolados (list[tuple], opcional): lista de (x, y) para destacar.
-            titulo (str): título do gráfico.
-        """
-        plt.figure(figsize=(8, 5))
-        plt.title(titulo)
-        plt.xlabel("x")
-        plt.ylabel("y")
-        plt.grid(True, linestyle="--", alpha=0.5)
+if __name__ == '__main__':
 
-        if not hasattr(self, "retas"):
-            self.calcular_retas()
+    #1 - Teste do interpolador '__call__':
 
-        # Desenha cada segmento linear
-        for i in range(len(self.x) - 1):
-            x_seg = np.linspace(self.x[i], self.x[i + 1], 100)
-            a, b = self.retas[i]
-            y_seg = a * x_seg + b
-            plt.plot(x_seg, y_seg, color="blue", linewidth=1.8)
+    x = [1,2,3,5]
+    y = [2,4,8,32]
+    interpolador_1 = InterpolacaoLinearPorPartes(x,y)
 
-        # Pontos base
-        plt.scatter(self.x, self.y, color="red", label="Pontos base", zorder=5)
+    print(interpolador_1(4)) #saída esperada: 20.0
 
-        # Pontos interpolados (opcional)
-        if pontos_interpolados:
-            px, py = zip(*pontos_interpolados)
-            plt.scatter(px, py, color="green", marker="x", s=70, label="Pontos interpolados", zorder=5)
+    #2 - Teste de 'calcular_retas' e 'interpolar_muitos_pontos':
 
-        plt.legend()
-        plt.tight_layout()
-        plt.show()
+    a = [2,3,4]
+    b = [4,9,16]
+    interpolador_2 = InterpolacaoLinearPorPartes(a,b)
 
+    interpolador_2.calcular_retas()
 
-# --------------------------
-# 🔧 TESTE DIRETO
-# --------------------------
-if __name__ == "__main__":
-    x = [1, 2, 3, 5]
-    y = [2, 4, 8, 32]
-    interp = InterpolacaoLinearPorPartes(x, y)
-    interp.calcular_retas()
+    pontos_interpolados = []
+    for i in range(40):
+        k=2+i/20
+        pontos_interpolados.append((k,float(interpolador_2.interpolar_muitos_pontos(k))))
 
-    # Gera pontos interpolados para o gráfico
-    pontos = [(k, interp.interpolar_muitos_pontos(k)) for k in np.linspace(1, 5, 20)]
-
-    # Agora basta chamar:
-    interp.plotar(pontos)
+    print(pontos_interpolados) #saída esperada: lista com os pontos interpolados

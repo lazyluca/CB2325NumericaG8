@@ -1,6 +1,6 @@
 import pytest
 
-from interpolacao.interpolador_hermite import InterpoladorHermite
+from cb2325numericag8.interpolacao.interpolador_hermite import InterpoladorHermite
 
 def test_listas_tamanhos_diferentes():
     """

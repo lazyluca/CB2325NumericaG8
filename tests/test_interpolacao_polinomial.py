@@ -8,7 +8,7 @@ corretude dos valores de interpolação.
 
 import pytest
 
-from interpolacao.interpolador_polinomial import InterpoladorPolinomial
+from cb2325numericag8.interpolacao.interpolador_polinomial import InterpoladorPolinomial
 
 
 def test_listas_tamanhos_diferentes():

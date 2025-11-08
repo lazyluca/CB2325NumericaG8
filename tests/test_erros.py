@@ -1,7 +1,7 @@
 import pytest
-from erros.erros import erro_absoluto 
-from erros.erros import erro_relativo
-from erros.erros import erro_quadratico_medio
+from cb2325numericag8.erros.erros import erro_absoluto 
+from cb2325numericag8.erros.erros import erro_relativo
+from cb2325numericag8.erros.erros import erro_quadratico_medio
 
 
 def test_erro_absoluto_nao_numerico():

@@ -1,4 +1,4 @@
-from utils.kahan import soma_kahan
+from cb2325numericag8.utils.kahan import soma_kahan
 
 
 def erro_absoluto(v_real, v_aproximado, precisao=None):

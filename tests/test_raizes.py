@@ -3,7 +3,7 @@
 import pytest
 import math
 import numpy as np
-from raizes.raizes import raiz 
+from cb2325numericag8.raizes.raizes import raiz 
 
 # Exemplos de funções
 def funcao1(x):

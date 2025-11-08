@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from utils.kahan import soma_kahan
-from grafico.grafico_integracao import grafico
+from cb2325numericag8.utils.kahan import soma_kahan
+from cb2325numericag8.grafico.grafico_integracao import grafico
 
 def integral_trapezoidal(funcao, a, b, n=100, mostrar_grafico=False, precisao=None):
     """

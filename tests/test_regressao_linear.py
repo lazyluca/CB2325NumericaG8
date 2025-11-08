@@ -1,5 +1,5 @@
 import pytest
-from aproximacao.regressao_linear import ajuste_linear
+from cb2325numericag8.aproximacao.regressao_linear import ajuste_linear
 
 def test_listas_tamanhos_diferentes():
     """

@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from grafico.grafico_minimos_quadrados import plot_aproximacao 
+from cb2325numericag8.grafico.grafico_minimos_quadrados import plot_aproximacao 
 
 def aproximacao_polinomial(abscissas, ordenadas, grau):
     """
