@@ -33,7 +33,7 @@ classifiers = [
 urls = { "Homepage" = "https://github.com/lazyluca/CB2325NumericaG8" }
 
 [project.optional-dependencies]
-dev = ["pytest", "ruff", "mypy"]
+dev = ["pytest"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
