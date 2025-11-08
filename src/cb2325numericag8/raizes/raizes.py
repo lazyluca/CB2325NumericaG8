@@ -1,6 +1,6 @@
 #Implementação do método das raízes
 
-from cb2325numericag8.raizes.grafico_raizes import grafico
+from cb2325numericag8.grafico.grafico_raizes import grafico
 
 def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method="secante", mostrar_grafico=False):
     """
