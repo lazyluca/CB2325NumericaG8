@@ -1,9 +1,60 @@
-# Bytecompiled
-__pycache__/
+# OS cruft
+.DS_Store
+Thumbs.db
 
-# pytest cache
-.pytest_cache/
-
-# IDE
+# Editors / IDEs
 .vscode/
+.idea/
+*.code-workspace
+# Vim/Neovim
+*.swp
+*.swo
+*~
+tags
+
+# Python bytecode & caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/
+.cache/
+
+# Virtual environments / version managers
+.venv/
+venv/
+env/
+ENV/
+.python-version   # pyenv
+
+# Packaging / build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+*.whl
+
+# Coverage / testing artifacts
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.hypothesis/
+
+# Notebooks
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# Docs (if you generate them)
+docs/_build/
+site/
+
+# Logs / temps
+*.log
+*.tmp
+*.temp
 
