@@ -1,6 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
-from grafico.grafico_interpolacao_newton import plot
+from cb2325numericag8.grafico.grafico_interpolacao_newton import plot
 
 class InterpoladorPolinomial:
     """
