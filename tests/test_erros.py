@@ -68,3 +68,65 @@ def test_erro_quadratico_medio_nao_numerico():
         lista_aproximada = [1,"x"]
         erro_quadratico_medio(lista_real, lista_aproximada)
 
+def test_precisao_valores_invalidos():
+    """
+    Testa o comportamento do parâmetro 'precisao' nas funções de cálculo de erros.
+    As funções devem aceitar somente 0 ou inteiros positivos, além do valor padrão None.
+    """
+
+    precisao_validos = [0, 1, 5]
+    precisao_invalidos = ["a", 3.5, [2], {"xy":1549}]
+    
+    for p in precisao_validos:
+        ea = erro_absoluto(3, 4, precisao=p)
+        er = erro_relativo(3, 4, precisao=p)
+        eqm = erro_quadratico_medio([3, 3.5], [4, 3.4], precisao=p)
+        assert isinstance(ea, float)
+        assert isinstance(er, float)
+        assert isinstance(eqm, float)
+
+        parte_dec_ea = str(ea).split(".")[-1]
+        if p == 0:
+            assert parte_dec_ea == "0"
+        else:
+            assert len(parte_dec_ea) <= p
+
+        parte_dec_er = str(er).split(".")[-1]
+        if p == 0:
+            assert parte_dec_er == "0"
+        else:
+            assert len(parte_dec_er) <= p
+        
+        parte_dec_eqm = str(eqm).split(".")[-1]
+        if p == 0:
+            assert parte_dec_eqm == "0"
+        else:
+            assert len(parte_dec_eqm) <= p
+    
+    for p in precisao_invalidos:
+        with pytest.raises(
+            ValueError, match="precisão deve ser um inteiro não negativo"
+        ):
+            erro_absoluto(3, 4, precisao=p)
+        with pytest.raises(
+            ValueError, match="precisão deve ser um inteiro não negativo"
+        ):
+            erro_relativo(3, 4, precisao=p)
+        with pytest.raises(
+            ValueError, match="precisão deve ser um inteiro não negativo"
+        ):
+            erro_quadratico_medio([3, 3.5], [4, 3.4], precisao=p)
+    
+    with pytest.raises(
+        ValueError, match="precisão deve ser um inteiro não negativo"
+    ):
+        erro_absoluto(3, 4, precisao=-1)
+    with pytest.raises(
+        ValueError, match="precisão deve ser um inteiro não negativo"
+    ):
+        
+        erro_relativo(3, 4, precisao=-5)
+    with pytest.raises(
+        ValueError, match="precisão deve ser um inteiro não negativo"
+    ):
+        erro_quadratico_medio([3, 3.5], [4, 3.4], precisao=-7)
