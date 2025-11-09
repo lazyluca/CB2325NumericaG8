@@ -7,4 +7,4 @@ from . import raizes as raizes
 from . import utils as utils
 
 __all__ = ["aproximacao", "erros", "grafico", "integracao", "interpolacao", "raizes", "utils"]
-__version__ = "0.1.2"
+__version__ = "0.1.3"
