@@ -42,7 +42,7 @@ Para executar este projeto, você precisará de:
 
 
 ### Cálculo de erros
-Aqui estão exemplos de como usar os métodos de cálculo de erros
+Aqui estão exemplos de como usar os métodos de cálculo de erros.
 
 #### Erro absoluto
 ```python
@@ -161,6 +161,7 @@ print(raiz2)
 ```
 
 ### Integração Numérica
+Aqui estão exemplos de como usar os métodos de integração numérica.
 ```python
 # 1. Defina a função a ser integrada
 def funcao1(x):

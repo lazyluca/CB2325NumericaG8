@@ -24,6 +24,8 @@ def erro_absoluto(v_real, v_aproximado, precisao=None):
         raise ValueError("Erro: os valores real e aproximado devem ser numéricos.")
     erro = abs(v_real - v_aproximado)
     if precisao is not None:
+        if not isinstance(precisao, int) or precisao < 0:
+            raise ValueError("Erro: precisão deve ser um inteiro não negativo.")
         return round(erro, precisao)
     return erro
 
@@ -56,6 +58,8 @@ def erro_relativo(v_real, v_aproximado, precisao=None):
         )
     erro = abs((v_real - v_aproximado) / v_real)
     if precisao is not None:
+        if not isinstance(precisao, int) or precisao < 0:
+            raise ValueError("Erro: precisão deve ser um inteiro não negativo.")
         return round(erro, precisao)
     return erro
 
@@ -93,5 +97,7 @@ def erro_quadratico_medio(lista_real, lista_aproximada, precisao=None):
                                in zip(valores_reais, valores_aproximados)]
     eqm = soma_kahan(lista_erros_quadraticos) / n
     if precisao is not None:
+        if not isinstance(precisao, int) or precisao < 0:
+            raise ValueError("Erro: precisão deve ser um inteiro não negativo.")
         return round(eqm, precisao)
     return eqm
