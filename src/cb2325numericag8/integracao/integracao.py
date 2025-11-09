@@ -26,6 +26,9 @@ def integral_trapezoidal(funcao, a, b, n=100, mostrar_grafico=False, precisao=No
     vals_x = np.linspace(a, b, n + 1)
     try:
         y = [funcao(x) for x in vals_x]
+        y = np.asarray(y, dtype=float)
+        if not np.all(np.isfinite(y)):
+            raise ValueError("Função não definida em algum ponto do intervalo (NaN ou infinito).")
     except Exception as e:
         raise ValueError(f"Erro ao avaliar a função em algum ponto do intervalo: {e}")
     delta = (b - a) / n
@@ -67,6 +70,9 @@ def integral_simpson(funcao, a, b, n=100, mostrar_grafico=False, precisao=None):
     vals_x = np.linspace(a, b, n + 1)
     try:
         y = [funcao(x) for x in vals_x]
+        y = np.asarray(y, dtype=float)
+        if not np.all(np.isfinite(y)):
+            raise ValueError("Função não definida em algum ponto do intervalo (NaN ou infinito).")
     except Exception as e:
         raise ValueError(f"Erro ao avaliar a função em algum ponto do intervalo: {e}")
     delta = (b - a) / n
@@ -110,8 +116,13 @@ def integral(funcao, a, b, n=100, mostrar_grafico=False, precisao=None, metodo='
         float: Valor numérico obtido para a integral arredondado 
         de acordo com a precisão, caso fornecida.
     """
-
-    metodo = metodo.capitalize()
+    try:
+        metodo = metodo.capitalize()
+    except AttributeError:
+        raise ValueError(
+            f"Erro: o método informado deve ser uma string. "
+            f"Recebido tipo {type(metodo).__name__}."
+        )
 
     if metodo not in metodos_integral:
         raise ValueError(
