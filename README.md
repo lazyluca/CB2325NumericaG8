@@ -1,12 +1,17 @@
 # 📈 Cálculo Numérico
 
-Este repositório contém implementações de métodos de interpolação, raízes e cálculo de erros, desenvolvidos para a disciplina de programação 2 do IMPA TECH.
+Este repositório contém implementações de métodos de integração numérica, interpolação, raízes e cálculo de erros, desenvolvidos para a disciplina de programação 2 do IMPA TECH.
 
 ---
 
 ## 🚀 Funcionalidades
 
 Este projeto implementa as seguintes funcionalidades:
+
+* **Cálculo de Erros:**
+    * Erro Absoluto;
+    * Erro Relativo;
+    * Erro Quadrático Médio.
 
 * **Interpolação:**
     * Interpolação Polinomial (Método de Lagrange);
@@ -17,6 +22,10 @@ Este projeto implementa as seguintes funcionalidades:
     * Método da Bisseção;
     * Método da Secante;
     * Método de Newton-Raphson.
+
+* **Integração Numérica:**
+    * Método do Trapézio;
+    * Método de Simpson.
 ---
 
 ## 📋 Pré-requisitos
@@ -32,6 +41,60 @@ Para executar este projeto, você precisará de:
 ## 💡 Exemplo de Uso
 
 
+### Cálculo de erros
+Aqui estão exemplos de como usar os métodos de cálculo de erros
+
+#### Erro absoluto
+```python
+# 1. Defina os valores de entrada
+valor_teorico = 3.1415926
+valor_aproximado = 3.14
+
+# 2. Defina uma precisão (opcional)
+p = 3
+
+# 3. Realize a chamada da função
+erro1 = erro_absoluto(valor_teorico, valor_aproximado)
+erro2 = erro_absoluto(valor_teorico, valor_aproximado, precisao=p)
+
+# 4. Saída esperada
+print(erro1)
+print(erro2)
+```
+#### Erro relativo
+```python
+# 1. Defina os valores de entrada
+valor_teorico = 3.1415926
+valor_aproximado = 3.14
+
+# 2. Defina uma precisão (opcional)
+p = 3
+
+# 3. Realize a chamada da função
+erro1 = erro_relativo(valor_teorico, valor_aproximado)
+erro2 = erro_relativo(valor_teorico, valor_aproximado, precisao=p)
+
+# 4. Saída esperada
+print(erro1)
+print(erro2)
+```
+#### Erro quadrático médio
+```python
+# 1. Defina os valores de entrada (listas)
+valores_teoricos = [3.1415926, 2.7182818]
+valores_aproximados = [3.14, 2.72]
+
+# 2. Defina uma precisão (opcional)
+p = 3
+
+# 3. Realize a chamada da função
+erro1 = erro_quadratico_medio(valores_teoricos, valores_aproximados)
+erro2 = erro_quadratico_medio(valores_teoricos, valores_aproximados, precisao=p)
+
+# 4. Saída esperada
+print(erro1)
+print(erro2)
+```
 ### Interpoladores
 Aqui estão exemplos de como usar os interpoladores.
 
@@ -97,4 +160,35 @@ raiz2,_ = raiz(h, a=2, f_prime=h_prime, tol=1e-6, method="newton_raphson")
 print(raiz2)
 ```
 
- 
+### Integração Numérica
+```python
+# 1. Defina a função a ser integrada
+def funcao1(x):
+    return x**2
+funcao2 = lambda x: x**2
+
+# 2. Defina o intervalo de integração
+limite_inferior = 0
+limite_superior = 3.14
+
+# 3. Defina o número de subdivisões de intervalo de integração, precisão e se deseja exibir o gráfico (opcionais)
+subdivisoes = 100
+p = 3
+exibir = True
+
+# 4. Defina o método (opcional)
+metodo1 = "Trapezoidal"
+metodo2 = "Simpson"
+
+# 5. Realize a chamada da função
+area1 = integral(funcao1, a, b, n=subdivisoes, mostrar_grafico=exibir, metodo=metodo1, precisao=p)
+area2 = integral(funcao1, a, b, metodo=metodo2)
+area3 = integral(funcao1, a, b)
+area4 = integral(funcao2, a, b)
+
+# 6. Saída esperada: gráfico (para area1) e valores
+print(area1)
+print(area2)
+print(area3)
+print(area4)
+```
