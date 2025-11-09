@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from cb2325numericag8.grafico.grafico_interpolador_linear_por_partes import grafico_interpolacao_linear
 class InterpolacaoLinearPorPartes:
     
     '''
@@ -131,6 +132,15 @@ class InterpolacaoLinearPorPartes:
 
         return y
 
+    def plot(self):
+
+        '''
+        Plota os segmentos de retas do interpolador
+        '''
+
+        grafico_interpolacao_linear(self)
+    
+
 #TESTES:
 
 if __name__ == '__main__':
@@ -157,3 +167,8 @@ if __name__ == '__main__':
         pontos_interpolados.append((k,float(interpolador_2.interpolar_muitos_pontos(k))))
 
     print(pontos_interpolados) #saída esperada: lista com os pontos interpolados
+
+    #3 - Teste do 'plot':
+
+    interpolador_1.plot()
+    interpolador_2.plot()
