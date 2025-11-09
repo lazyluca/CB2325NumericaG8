@@ -39,6 +39,8 @@ def integral_trapezoidal(funcao, a, b, n=100, mostrar_grafico=False, precisao=No
         grafico_trapezoidal(funcao, a, b, s=300, area=valor_integral, n=n)
 
     if precisao is not None:
+        if not isinstance(precisao, int) or precisao < 0:
+            raise ValueError("Erro: precisão deve ser um inteiro não negativo.")
         return round(valor_integral, precisao)
     return valor_integral
 
@@ -86,6 +88,8 @@ def integral_simpson(funcao, a, b, n=100, mostrar_grafico=False, precisao=None):
         grafico_simpson(funcao, a, b, s=300, area=valor_integral, n=n)
 
     if precisao is not None:
+        if not isinstance(precisao, int) or precisao < 0:
+            raise ValueError("Erro: precisão deve ser um inteiro não negativo.")
         return round(valor_integral, precisao)
     return valor_integral
 
