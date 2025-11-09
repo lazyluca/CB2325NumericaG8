@@ -98,6 +98,22 @@ print(erro2)
 ### Interpoladores
 Aqui estão exemplos de como usar os interpoladores.
 
+#### Interpolação de Hermite
+
+```python
+# 1. Defina os dados de entrada
+pontos_x = [0, 1]
+valores_y = [1, 2]
+derivadas_dy = [1, 0]
+
+# 2. Crie uma instância da class
+polinomio = InterpoladorHermite(pontos_x, valores_y, derivadas_dy)
+
+# 3. Ache o valor desejado para um ponto
+print(f"H(0) = {polinomio(0):.4f}")
+print(f"H(1) = {polinomio(1):.4f}")
+print(f"H(0.5) = {polinomio(0.5):.4f}")
+```
 #### Interpolação Linear por Partes
 
 ```python
@@ -117,22 +133,6 @@ x_k = 1
 for i in range(50):
     print(f"L({x_k:.2f})= {teste_linear.interpolar_muitos_pontos(x_k):.2f}")
     x_k += 0.1
-```
-#### Interpolação de Hermite
-
-```python
-# 1. Defina os dados de entrada
-pontos_x = [0, 1]
-valores_y = [1, 2]
-derivadas_dy = [1, 0]
-
-# 2. Crie uma instância da class
-polinomio = InterpoladorHermite(pontos_x, valores_y, derivadas_dy)
-
-# 3. Ache o valor desejado para um ponto
-print(f"H(0) = {polinomio(0):.4f}")
-print(f"H(1) = {polinomio(1):.4f}")
-print(f"H(0.5) = {polinomio(0.5):.4f}")
 ```
 ### Raízes
 Aqui estão exemplos de como usar os métodos raízes de funções.
