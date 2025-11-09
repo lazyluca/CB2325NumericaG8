@@ -98,6 +98,26 @@ print(erro2)
 ### Interpoladores
 Aqui estão exemplos de como usar os interpoladores.
 
+#### Interpolação Linear por Partes
+
+```python
+# 1. Defina os dados de entrada
+valores_x = [1, 2, 3, 4, 6]
+valores_y = [2, 4, 8, 16, 64]
+
+# 2. Crie uma instância da classe
+teste_linear = InterpolacaoLinearPorPartes(valores_x,valores_y)
+
+# 3. Interpole um ponto
+print(f"L(5) = {teste_linear(5):.4f}")
+
+# 4. Interpole muitos pontos
+teste_linear.calcular_retas()
+x_k = 1
+for i in range(50):
+    print(f"L({x_k:.2f})= {teste_linear.interpolar_muitos_pontos(x_k):.2f}")
+    x_k += 0.1
+```
 #### Interpolação de Hermite
 
 ```python
