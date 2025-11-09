@@ -2,18 +2,19 @@
 
 from cb2325numericag8.grafico.grafico_raizes import grafico
 
-def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method="secante", mostrar_grafico=False):
+def raiz(funcao, a, b=None, f_prime=None, tol=1e-6, max_iter=1000, method="secante", mostrar_grafico=False):
     """
     Função principal para encontrar raizes de uma equação f(x)=0.
 
     Args:
         funcao (callable): expressão dada para a função f(x)
-        a (float): limite inferior do intervalo de busca.
-        b (float): limite superior do intervalo de busca.
+        a (float): parâmetro inicial (depende do método escolhido)
+        b (float): parâmetro inicial (depende do método escolhido)
         tol (float): tolerância para a convergência do método.
         f_prime (callable): derivada da função f(x).
         max_iter (int): número máximo de iterações do método.
         method (str): método a ser utilizado.
+        mostrar_grafico (bool): se for True plota o gráfico. Padrão é False.
     
     Returns:
         tuple (float, list): raiz encontrada e lista de iterações.
@@ -25,22 +26,19 @@ def raiz(funcao, a=None, b=None, f_prime=None, tol=1e-6, max_iter=1000, method="
     if method == "bissecao":
         raiz,lista_iteracoes=bissecao(funcao, a, b, tol, max_iter)
         if(mostrar_grafico==True):
-            #Implementar chamada da função de plotagem
-            pass
+            grafico(funcao, lista_iteracoes, titulo_metodo="Método Numérico da Bisseção para Raízes")
         return raiz,lista_iteracoes
 
     elif method == "secante":
         raiz,lista_iteracoes=secante(funcao, a, b, tol, max_iter)
         if(mostrar_grafico==True):
-            #Implementar chamada da função de plotagem
-            pass
+            grafico(funcao, lista_iteracoes, titulo_metodo="Método Numérico da Secante para Raízes")
         return raiz,lista_iteracoes
 
     elif method == "newton_raphson":
         raiz,lista_iteracoes=newton(funcao, a, f_prime,tol, max_iter)
         if(mostrar_grafico==True):
-            #Implementar chamada da função de plotagem
-            pass
+            grafico(funcao, lista_iteracoes, titulo_metodo="Método Numérico de Newton-Raphson para Raízes")
         return raiz,lista_iteracoes
     
     else:
