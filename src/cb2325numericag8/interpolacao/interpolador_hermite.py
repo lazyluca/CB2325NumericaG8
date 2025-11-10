@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from cb2325numericag8.grafico.grafico_interpolacao_hermite import grafico_hermite
 
 class InterpoladorHermite():
     """
@@ -132,3 +133,12 @@ class InterpoladorHermite():
             prod *= (x - self._z_nodes[i])
 
         return k
+
+    def grafico(self):
+
+        '''
+        Plota os segmentos de retas do interpolador
+        '''
+
+        grafico_hermite(self)
+        
