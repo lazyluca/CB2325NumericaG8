@@ -251,4 +251,76 @@ ajuste2 = aproximacao_polinomial(x, y, grau=grau2)
 print(ajuste1)
 print(ajuste2)
 ```
+### Representação Gráfica
+
+Aqui estão exemplos de como usar as funções de representação gráfica.
+
+#### Interpoladores
+
+##### Interpolação de Hermite
+```python
+#adicionar
+```
+##### Interpolação Linear por Partes 
+```python
+#adicionar
+```
+##### Interpolação Polinomial
+```python
+# 1. Definimos os pontos conhecidos
+valores_x = [0, 1, 2, 3]
+valores_y = [1, 2, 0, 5]
+
+# 2. Criamos o interpolador de Newton
+interpolador = InterpoladorPolinomial(valores_x, valores_y)
+
+# 3. Avaliamos o polinômio em um ponto
+x_avaliar = 1.5
+print(f"P({x_avaliar}) =", interpolador(x_avaliar))
+
+# 4. Geramos o gráfico do polinômio interpolador
+interpolador.grafico()
+```
+
+#### Raízes
+
+```python
+#adicionar
+```
+
+#### Integração Numérica
+
+```python
+# 1. Definimos a função
+def f(x):
+    return x**2
+
+# 2. Realize a integração pelo método dos trapézios
+area_trap = integral(f, 0, 3, n=20, metodo='Trapezoidal', mostrar_grafico=True)
+print("Área (Trapézios) =", area_trap)
+
+# 3. Realize a integração pelo método de Simpson
+area_simp = integral(f, 0, 3, n=20, metodo='Simpson', mostrar_grafico=True)
+print("Área (Simpson) =", area_simp)
+```
+
+#### Aproximação
+
+##### Regressão Linear
+```python
+#adicionar
+```
+
+##### Mínimos Quadrados
+```python
+# 1. Definimos os pontos de entrada (x, y)
+x = [0, 1, 2, 3, 4]
+y = [1, 2.2, 2.8, 3.6, 5.1]
+
+# 2. Chamamos a função de Aproximação Polinomial
+coef = AproximacaoPolinomial(x, y, grau=2, plot=True)
+
+# 3. Exibimos os coeficientes do polinômio ajustado
+print("Coeficientes do polinômio aproximado:", coef)
+```
 
