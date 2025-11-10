@@ -18,8 +18,8 @@ def grafico_ajuste_linear(x, y, a, b):
     y_suave = a * x_suave + b
 
     # Plota os pontos originais
-    plt.scatter(x, y, color='blue', s=60, zorder=3,
-                 markersize = 7, markercolor = 'black', label='Pontos Reais')
+    plt.scatter(x, y, s=60,facecolor='blue',edgecolor='black',        
+        linewidth=0.8, zorder=3,label='Pontos Reais')
 
     # Plota a reta ajustada
     plt.plot(x_suave, y_suave, color='crimson', linewidth=2.2,
