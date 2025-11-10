@@ -251,4 +251,125 @@ ajuste2 = aproximacao_polinomial(x, y, grau=grau2)
 print(ajuste1)
 print(ajuste2)
 ```
+### Representação Gráfica
+
+Aqui estão exemplos de como usar as funções de representação gráfica.
+
+#### Interpoladores
+
+##### Interpolação de Hermite
+```python
+# 1. Definimos os pontos conhecidos e suas derivadas
+valores_x = [0, 1, 2]
+valores_y = [1, 3, 2]
+valores_y_deriv = [1, 0, -1]
+
+# 2. Criamos o interpolador de Hermite
+interpolador = InterpoladorHermite(valores_x, valores_y, valores_y_deriv)
+
+# 3. Avaliamos o polinômio em um ponto
+x_avaliar = 1.5
+print(f"H({x_avaliar}) =", interpolador(x_avaliar))
+
+# 4. Geramos o gráfico do polinômio interpolador de Hermite
+interpolador.grafico()
+
+```
+##### Interpolação Linear por Partes 
+```python
+# 1. Definimos os pontos conhecidos
+valores_x = [1, 2, 3, 5]
+valores_y = [2, 4, 8, 32]
+
+# 2. Criamos o interpolador linear por partes
+interpolador = InterpolacaoLinearPorPartes(valores_x, valores_y)
+
+# 3. Avaliamos o interpolador em um ponto
+x_avaliar = 4
+print(f"f({x_avaliar}) =", interpolador(x_avaliar))
+
+# 4. Geramos o gráfico da interpolação linear por partes
+interpolador.grafico()
+```
+##### Interpolação Polinomial
+```python
+# 1. Definimos os pontos conhecidos
+valores_x = [0, 1, 2, 3]
+valores_y = [1, 2, 0, 5]
+
+# 2. Criamos o interpolador de Newton
+interpolador = InterpoladorPolinomial(valores_x, valores_y)
+
+# 3. Avaliamos o polinômio em um ponto
+x_avaliar = 1.5
+print(f"P({x_avaliar}) =", interpolador(x_avaliar))
+
+# 4. Geramos o gráfico do polinômio interpolador
+interpolador.grafico()
+```
+
+#### Raízes
+```python
+# 1. Definimos a função cuja raiz queremos encontrar
+f = lambda x: x**3 - 9*x + 5
+
+# 2. Escolhemos um intervalo ou estimativas iniciais
+a = 0
+b = 2
+
+# 3. Aplicamos o método escolhido (por exemplo, o método da Secante)
+raiz_aproximada, iteracoes = raiz(f, a=a, b=b, tol=1e-6, method="secante")
+
+# 4. Exibimos o valor aproximado da raiz
+print(f"Raiz aproximada: {raiz_aproximada:.6f}")
+
+# 5. Geramos o gráfico com as iterações e a função
+grafico(f, iteracoes, a, b, titulo_metodo="Método da Secante")
+```
+#### Integração Numérica
+
+```python
+# 1. Definimos a função
+def f(x):
+    return x**2
+
+# 2. Realize a integração pelo método dos trapézios
+area_trap = integral(f, 0, 3, n=20, metodo='Trapezoidal', mostrar_grafico=True)
+print("Área (Trapézios) =", area_trap)
+
+# 3. Realize a integração pelo método de Simpson
+area_simp = integral(f, 0, 3, n=20, metodo='Simpson', mostrar_grafico=True)
+print("Área (Simpson) =", area_simp)
+```
+
+#### Aproximação
+
+##### Regressão Linear
+```python
+# 1. Definimos os dados experimentais
+x = [0, 1, 2, 3, 4]
+y = [1.1, 1.9, 3.0, 3.9, 5.2]
+
+# 2. Calculamos os coeficientes da reta ajustada
+a, b = ajuste_linear(x, y)
+
+# 3. Exibimos a equação da reta
+print(f"Equação ajustada: y = {a:.2f}x + {b:.2f}")
+
+# 4. Geramos o gráfico do ajuste linear
+grafico_ajuste_linear(x, y, a, b)
+```
+
+##### Mínimos Quadrados
+```python
+# 1. Definimos os pontos de entrada (x, y)
+x = [0, 1, 2, 3, 4]
+y = [1, 2.2, 2.8, 3.6, 5.1]
+
+# 2. Chamamos a função de Aproximação Polinomial
+coef = AproximacaoPolinomial(x, y, grau=2, plot=True)
+
+# 3. Exibimos os coeficientes do polinômio ajustado
+print("Coeficientes do polinômio aproximado:", coef)
+```
 

@@ -36,11 +36,15 @@ def AproximacaoPolinomial(abscissas: list, ordenadas: list, grau: int = 1, plot:
             "O argumento 2 de AproximacaoPolinomial (ordenadas) precisa ser 'list' ou 'tuple'"
         )
             
-    if not isinstance(grau, (int,float)):
-        if grau != int(grau):
-            raise TypeError(
-                "O argumento 3 de AproximacaoPolinomial (grau do polinômio) precisa ser 'int'"
+    if not isinstance(grau, int):
+        if isinstance(grau, float):
+            if grau != int(grau):
+                raise TypeError(
+                    "O argumento 3 de AproximacaoPolinomial (grau do polinômio) precisa ser 'int'"
             )
+        raise TypeError(
+            "O argumento 3 de AproximacaoPolinomial (grau do polinômio) precisa ser 'int'"
+        )
     
     if len(abscissas) == 0:
         raise ValueError(
