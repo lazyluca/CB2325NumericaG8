@@ -36,7 +36,7 @@ def grafico_trapezoidal(funcao, a, b, s, area, n=20):
     plt.fill_between(x_disc, y_disc, 0, label="Área da Aproximação", 
                      color="skyblue", alpha=0.6)
     
-    plt.vlines(x_disc, 0, y_disc, color="crimmson", linestyle="--", 
+    plt.vlines(x_disc, 0, y_disc, color="crimson", linestyle="--", 
                linewidth=0.8, alpha=0.7)
     plt.plot(x_disc, y_disc, color="crimson", linewidth=1.5, alpha=0.8)
     
