@@ -24,7 +24,7 @@ def plot_aproximacao(x_pontos, y_pontos, coeficientes, n_suave=500):
     plt.plot(x_suave, y_suave, 
              '-', 
              label="Aproximação por Mínimos Quadrados", 
-             color='orange', 
+             color='crimson', 
              linewidth=2,
              zorder=2)
 
