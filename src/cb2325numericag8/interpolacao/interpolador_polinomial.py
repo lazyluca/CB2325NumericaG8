@@ -1,5 +1,5 @@
 import numpy as np
-from cb2325numericag8.grafico.grafico_interpolacao_newton import plot
+from cb2325numericag8.grafico.grafico_interpolacao_newton import grafico_newton
 
 class InterpoladorPolinomial:
     """
@@ -187,6 +187,12 @@ class InterpoladorPolinomial:
             prod *= (x - self.valores_x[i])
 
         return k
+
+    def grafico(self):
+        '''
+        Plota os segmentos de retas do interpolador
+        '''
+        grafico_newton(self)
         
 
 if __name__ == "__main__":
@@ -215,7 +221,7 @@ if __name__ == "__main__":
         print(f"P({ponto_teste_2}) = {resultado_2:.4f}")
 
         print("Gerando gráfico...")
-        p.plot(num_pontos_plot)
+        p.grafico()
 
     except (ValueError, TypeError) as e:
         print(f"Erro ao criar ou avaliar o interpolador: {e}")
