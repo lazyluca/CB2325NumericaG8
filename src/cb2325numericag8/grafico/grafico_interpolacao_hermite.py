@@ -25,7 +25,8 @@ def grafico_hermite(interpolador, a=None, b=None, s=300):
 
     # Pontos reais e derivadas
     plt.scatter(interpolador.valorx, interpolador.valory,
-                color='#2255A4', label='Pontos (x, f(x))', s=60, zorder=3)
+                color='blue', label='Pontos (x, f(x))', s=60,
+                 markersize=5, markercolor='black', zorder=3)
 
     # Curva interpoladora de Hermite
     plt.plot(x_suave, y_suave, color='crimson', linewidth=2.2,
@@ -34,12 +35,12 @@ def grafico_hermite(interpolador, a=None, b=None, s=300):
     # Linhas indicativas das derivadas nos pontos
     for xi, yi, dy in zip(interpolador.valorx, interpolador.valory, interpolador.valory_deriv):
         plt.arrow(xi, yi, 0.15, 0.15 * dy,
-                  color='darkgreen', width=0.002, head_width=0.05,
+                  color='yellow', width=0.002, head_width=0.05,
                   length_includes_head=True, alpha=0.6)
 
     plt.title("Interpolação de Hermite", fontsize=14, fontweight='bold')
     plt.xlabel("Eixo X", fontsize=12)
     plt.ylabel("Eixo Y", fontsize=12)
-    plt.legend(frameon=True, shadow=True)
+    plt.legend(loc='best',frameon=True, shadow=True)
     plt.tight_layout()
     plt.show()
