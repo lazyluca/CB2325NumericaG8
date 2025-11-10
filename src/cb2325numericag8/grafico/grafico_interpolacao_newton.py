@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def plot(self, num_pontos_suavizacao: int = 500):
+def grafico_newton(self, num_pontos_suavizacao: int = 500):
         """
         Gera um gráfico do polinômio de interpolação e dos pontos de entrada.
 
