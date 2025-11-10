@@ -259,12 +259,37 @@ Aqui estão exemplos de como usar as funções de representação gráfica.
 
 ##### Interpolação de Hermite
 ```python
-#adicionar
+# 1. Definimos os pontos conhecidos e suas derivadas
+valores_x = [0, 1, 2]
+valores_y = [1, 3, 2]
+valores_y_deriv = [1, 0, -1]
+
+# 2. Criamos o interpolador de Hermite
+interpolador = InterpoladorHermite(valores_x, valores_y, valores_y_deriv)
+
+# 3. Avaliamos o polinômio em um ponto
+x_avaliar = 1.5
+print(f"H({x_avaliar}) =", interpolador(x_avaliar))
+
+# 4. Geramos o gráfico do polinômio interpolador de Hermite
+interpolador.grafico()
+
 ```
 ##### Interpolação Linear por Partes 
-```python
-#adicionar
-```
+# 1. Definimos os pontos conhecidos
+valores_x = [1, 2, 3, 5]
+valores_y = [2, 4, 8, 32]
+
+# 2. Criamos o interpolador linear por partes
+interpolador = InterpolacaoLinearPorPartes(valores_x, valores_y)
+
+# 3. Avaliamos o interpolador em um ponto
+x_avaliar = 4
+print(f"f({x_avaliar}) =", interpolador(x_avaliar))
+
+# 4. Geramos o gráfico da interpolação linear por partes
+interpolador.grafico()
+
 ##### Interpolação Polinomial
 ```python
 # 1. Definimos os pontos conhecidos
@@ -284,9 +309,22 @@ interpolador.grafico()
 
 #### Raízes
 
-```python
-#adicionar
-```
+# 1. Definimos a função cuja raiz queremos encontrar
+f = lambda x: x**3 - 9*x + 5
+
+# 2. Escolhemos um intervalo ou estimativas iniciais
+a = 0
+b = 2
+
+# 3. Aplicamos o método escolhido (por exemplo, o método da Secante)
+raiz_aproximada, iteracoes = raiz(f, a=a, b=b, tol=1e-6, method="secante")
+
+# 4. Exibimos o valor aproximado da raiz
+print(f"Raiz aproximada: {raiz_aproximada:.6f}")
+
+# 5. Geramos o gráfico com as iterações e a função
+grafico(f, iteracoes, a, b, titulo_metodo="Método da Secante")
+
 
 #### Integração Numérica
 
@@ -307,9 +345,19 @@ print("Área (Simpson) =", area_simp)
 #### Aproximação
 
 ##### Regressão Linear
-```python
-#adicionar
-```
+# 1. Definimos os dados experimentais
+x = [0, 1, 2, 3, 4]
+y = [1.1, 1.9, 3.0, 3.9, 5.2]
+
+# 2. Calculamos os coeficientes da reta ajustada
+a, b = ajuste_linear(x, y)
+
+# 3. Exibimos a equação da reta
+print(f"Equação ajustada: y = {a:.2f}x + {b:.2f}")
+
+# 4. Geramos o gráfico do ajuste linear
+grafico_ajuste_linear(x, y, a, b)
+
 
 ##### Mínimos Quadrados
 ```python
