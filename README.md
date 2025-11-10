@@ -276,6 +276,7 @@ interpolador.grafico()
 
 ```
 ##### Interpolação Linear por Partes 
+```python
 # 1. Definimos os pontos conhecidos
 valores_x = [1, 2, 3, 5]
 valores_y = [2, 4, 8, 32]
@@ -289,7 +290,7 @@ print(f"f({x_avaliar}) =", interpolador(x_avaliar))
 
 # 4. Geramos o gráfico da interpolação linear por partes
 interpolador.grafico()
-
+```
 ##### Interpolação Polinomial
 ```python
 # 1. Definimos os pontos conhecidos
@@ -308,7 +309,7 @@ interpolador.grafico()
 ```
 
 #### Raízes
-
+```python
 # 1. Definimos a função cuja raiz queremos encontrar
 f = lambda x: x**3 - 9*x + 5
 
@@ -324,8 +325,7 @@ print(f"Raiz aproximada: {raiz_aproximada:.6f}")
 
 # 5. Geramos o gráfico com as iterações e a função
 grafico(f, iteracoes, a, b, titulo_metodo="Método da Secante")
-
-
+```
 #### Integração Numérica
 
 ```python
@@ -345,6 +345,7 @@ print("Área (Simpson) =", area_simp)
 #### Aproximação
 
 ##### Regressão Linear
+```python
 # 1. Definimos os dados experimentais
 x = [0, 1, 2, 3, 4]
 y = [1.1, 1.9, 3.0, 3.9, 5.2]
@@ -357,7 +358,7 @@ print(f"Equação ajustada: y = {a:.2f}x + {b:.2f}")
 
 # 4. Geramos o gráfico do ajuste linear
 grafico_ajuste_linear(x, y, a, b)
-
+```
 
 ##### Mínimos Quadrados
 ```python
