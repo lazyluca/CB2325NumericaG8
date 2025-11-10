@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-
+from cb2325numericag8.grafico.grafico_ajuste_linear import grafico_ajuste_linear
 def ajuste_linear(x, y, plot=True):
     """
     Calcula o ajuste linear dos dados (mínimos quadrados).
@@ -22,14 +22,7 @@ def ajuste_linear(x, y, plot=True):
     b = (soma_y - a * soma_x) / n
 
     if plot:
-        plt.scatter(x, y, color='blue', label='Pontos reais')
-        plt.plot(x, [a*xi + b for xi in x], color='red', label=f'y = {a:.2f}x + {b:.2f}')
-        plt.xlabel('x')
-        plt.ylabel('y')
-        plt.legend()
-        plt.title('Ajuste Linear (Mínimos Quadrados)')
-        plt.grid(True)
-        plt.show()
+        grafico_ajuste_linear(x,y,a,b)
 
     return a, b
 
