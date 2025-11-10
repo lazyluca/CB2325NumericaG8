@@ -23,10 +23,10 @@ def grafico_interpolacao_linear(interpolador, a=None, b=None, s=400):
     x_plot = np.linspace(a, b, s)
     y_plot = [interpolador(xi) for xi in x_plot]
 
-    # Pontos de base
+   # Pontos de base
     plt.scatter(interpolador.x, interpolador.y,
-                color='blue', s=60, zorder=3, markersize=5 ,
-                  markercolor='black', label='Pontos Originais (x, f(x))')
+                color='blue', s=60, zorder=3,edgecolors='black',
+                 linewidths=1.0,  label='Pontos Originais (x, f(x))')
 
     # Linhas lineares por partes
     plt.plot(x_plot, y_plot,
