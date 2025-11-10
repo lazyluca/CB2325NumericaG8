@@ -25,25 +25,27 @@ def grafico(funcao, iteracoes, a=None, b=None, titulo_metodo="Método Numérico 
     y_vals = np.array([funcao(x) for x in x_vals])
 
     # Plota a curva principal f(x)
-    plt.plot(x_vals, y_vals, label="f(x)", color="#2255A4", linewidth=2.5)
+    plt.plot(x_vals, y_vals, label="f(x)", color="blue", linewidth=2.5, alpha=0.9)
 
     # Marca o eixo x
     plt.axhline(0, color='black', linewidth=0.8)
 
     # Marca os pontos de iteração
     y_iter = [funcao(x) for x in iteracoes]
-    plt.scatter(iteracoes, y_iter, color='crimson', s=60, zorder=3, label='Iterações')
+    plt.scatter(iteracoes, y_iter, color='crimson', s=60, zorder=3,
+                markersize=5, markercolor='black', label='Iterações')
 
     # Liga as iterações por linhas tracejadas
     plt.plot(iteracoes, y_iter, color='crimson', linestyle='--', alpha=0.8)
 
     # Destaca a última aproximação (raiz final)
-    plt.scatter(iteracoes[-1], funcao(iteracoes[-1]), color='green', s=80, zorder=4, label='Raiz Aproximada')
+    plt.scatter(iteracoes[-1], funcao(iteracoes[-1]), color='yellow', s=80, 
+                markersize=5, markercolor='black', zorder=4, label='Raiz Aproximada')
 
     # Configurações estéticas
     plt.title(titulo_metodo, fontsize=14, fontweight='bold')
     plt.xlabel("Eixo X", fontsize=12)
-    plt.ylabel("f(x)", fontsize=12)
-    plt.legend(frameon=True, shadow=True)
+    plt.ylabel("Eixo Y", fontsize=12)
+    plt.legend(loc='best', frameon=True, shadow=True)
     plt.tight_layout()
     plt.show()
