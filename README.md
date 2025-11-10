@@ -134,6 +134,22 @@ for i in range(50):
     print(f"L({x_k:.2f})= {teste_linear.interpolar_muitos_pontos(x_k):.2f}")
     x_k += 0.1
 ```
+#### Interpolação Polinomial
+
+```python
+# 1. Defina os dados de entrada
+pontos_x = [0, 1, 3, 4]
+valores_y = [0, 0, 6, 12]
+
+# 2. Crie uma instância da class
+polinomio = InterpoladorPolinomial(pontos_x, valores_y)
+
+# 3. Ache o valor desejado para um ponto
+i = 0
+while i < 10.5:
+    print(f"H({i}) = {polinomio(i):.4f}")
+    i += 0.5
+```
 ### Raízes
 Aqui estão exemplos de como usar os métodos raízes de funções.
 
