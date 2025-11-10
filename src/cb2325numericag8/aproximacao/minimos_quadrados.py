@@ -42,8 +42,8 @@ def AproximacaoPolinomial(abscissas: list, ordenadas: list, grau: int = 1, plot:
                 raise TypeError(
                     "O argumento 3 de AproximacaoPolinomial (grau do polinômio) precisa ser 'int'"
             )
-         raise TypeError(
-                "O argumento 3 de AproximacaoPolinomial (grau do polinômio) precisa ser 'int'"
+        raise TypeError(
+            "O argumento 3 de AproximacaoPolinomial (grau do polinômio) precisa ser 'int'"
         )
     
     if len(abscissas) == 0:
