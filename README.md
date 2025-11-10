@@ -14,7 +14,7 @@ Este projeto implementa as seguintes funcionalidades:
     * Erro Quadrático Médio.
 
 * **Interpolação:**
-    * Interpolação Polinomial (Método de Lagrange);
+    * Interpolação Polinomial;
     * Interpolação de Hermite;
     * Interpolação Linear por partes.
 
