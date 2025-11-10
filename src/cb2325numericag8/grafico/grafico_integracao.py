@@ -30,17 +30,17 @@ def grafico_trapezoidal(funcao, a, b, s, area, n=20):
     x_disc = np.linspace(a, b, n + 1)
     y_disc = funcao(x_disc)
     
-    plt.plot(x_curva, y_curva, label="f(x)", color="#2255A4", 
+    plt.plot(x_curva, y_curva, label="f(x)", color="blue", 
              linewidth=2.5, alpha=0.9) 
     
     plt.fill_between(x_disc, y_disc, 0, label="Área da Aproximação", 
                      color="skyblue", alpha=0.6)
     
-    plt.vlines(x_disc, 0, y_disc, color="red", linestyle="--", 
+    plt.vlines(x_disc, 0, y_disc, color="crimmson", linestyle="--", 
                linewidth=0.8, alpha=0.7)
-    plt.plot(x_disc, y_disc, color="red", linewidth=1.5, alpha=0.8)
+    plt.plot(x_disc, y_disc, color="crimson", linewidth=1.5, alpha=0.8)
     
-    plt.plot(x_disc, y_disc, 'o', color='darkred', markersize=5, 
+    plt.plot(x_disc, y_disc, 'o', color='darkred', markersize=5, markercolor='black',
              label=f'{n} Partições')
     
 
@@ -51,7 +51,7 @@ def grafico_trapezoidal(funcao, a, b, s, area, n=20):
     plt.xlabel("Eixo X", fontsize=12)
     plt.ylabel("Eixo Y", fontsize=12)
 
-    plt.legend(loc='upper left', frameon=True, shadow=True)
+    plt.legend(loc='best', frameon=True, shadow=True)
 
     plt.tight_layout()
 
@@ -84,7 +84,7 @@ def grafico_simpson(funcao, a, b, s, area, n=20):
     x_disc = np.linspace(a, b, n + 1)
     y_disc = funcao(x_disc)
     
-    plt.plot(x_curva, y_curva, label="f(x)", color="#2255A4", 
+    plt.plot(x_curva, y_curva, label="f(x)", color="blue", 
              linewidth=2.5, alpha=0.9) 
     
     primeira_parabola = True
@@ -113,13 +113,13 @@ def grafico_simpson(funcao, a, b, s, area, n=20):
             plt.fill_between(x_local, y_local, 0,
                              color="skyblue", alpha=0.6)
 
-        plt.plot(x_local, y_local, color="#AA0000", linewidth=1.8, alpha=0.9)
+        plt.plot(x_local, y_local, color="crimson", linewidth=1.8, alpha=0.9)
 
-    plt.vlines(x_disc, 0, y_disc, color="red", linestyle="--", 
+    plt.vlines(x_disc, 0, y_disc, color="crimson", linestyle="--", 
                linewidth=0.8, alpha=0.7)
     
-    plt.plot(x_disc, y_disc, 'o', color='darkred', markersize=5, 
-             label=f'{n} Partições')
+    plt.plot(x_disc, y_disc, 'o', color='darkred', markersize=5,
+              markercolor='black', label=f'{n} Partições')
     
 
     plt.axhline(0, color='black', linewidth=0.5)
@@ -129,7 +129,7 @@ def grafico_simpson(funcao, a, b, s, area, n=20):
     plt.xlabel("Eixo X", fontsize=12)
     plt.ylabel("Eixo Y", fontsize=12)
 
-    plt.legend(loc='upper left', frameon=True, shadow=True)
+    plt.legend(loc='best', frameon=True, shadow=True)
 
     plt.tight_layout()
 
