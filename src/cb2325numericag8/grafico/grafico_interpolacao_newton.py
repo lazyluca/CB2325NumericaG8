@@ -27,7 +27,7 @@ def plot(self, num_pontos_suavizacao: int = 500):
         plt.plot(x_suave, y_suave,
                  '-',
                  label="Polinômio de Interpolação",
-                 color='orange',
+                 color='crimson',
                  linewidth=2,
                  zorder=2)
 
