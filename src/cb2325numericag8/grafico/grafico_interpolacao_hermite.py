@@ -23,9 +23,10 @@ def grafico_hermite(interpolador, a=None, b=None, s=300):
     x_suave = np.linspace(a, b, s)
     y_suave = [interpolador(xi) for xi in x_suave]
 
-    # Pontos reais e derivadas
-   plt.scatter(interpolador.valorx, interpolador.valory, s=60, facecolor='blue', 
-                edgecolor='black', linewidth=0.8, label='Pontos (x, f(x))',zorder=3)
+    # Pontos reais e derivadas 
+    plt.scatter(interpolador.valorx, interpolador.valory, s=60,
+                facecolor='blue', edgecolor='black', linewidth=0.8,
+                label='Pontos (x, f(x))', zorder=3)
 
     # Curva interpoladora de Hermite
     plt.plot(x_suave, y_suave, color='crimson', linewidth=2.2,
