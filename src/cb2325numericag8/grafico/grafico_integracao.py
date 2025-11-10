@@ -40,9 +40,8 @@ def grafico_trapezoidal(funcao, a, b, s, area, n=20):
                linewidth=0.8, alpha=0.7)
     plt.plot(x_disc, y_disc, color="crimson", linewidth=1.5, alpha=0.8)
     
-    plt.plot(x_disc, y_disc, 'o', color='darkred', markersize=5, markercolor='black',
-             label=f'{n} Partições')
-    
+    plt.plot(x_disc, y_disc, 'o', markersize=6, markerfacecolor='crimson',      
+    markeredgecolor='black', markeredgewidth=1.0, label=f'{n} Partições')
 
     plt.axhline(0, color='black', linewidth=0.5)
 
@@ -118,10 +117,9 @@ def grafico_simpson(funcao, a, b, s, area, n=20):
     plt.vlines(x_disc, 0, y_disc, color="crimson", linestyle="--", 
                linewidth=0.8, alpha=0.7)
     
-    plt.plot(x_disc, y_disc, 'o', color='darkred', markersize=5,
-              markercolor='black', label=f'{n} Partições')
+    plt.plot(x_disc, y_disc, 'o', markersize=6, markerfacecolor='crimson',      
+        markeredgecolor='black', markeredgewidth=1.0, label=f'{n} Partições')
     
-
     plt.axhline(0, color='black', linewidth=0.5)
 
     plt.title(f"Aproximação da Integral ≈ {area:.4f}", 
