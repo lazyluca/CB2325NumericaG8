@@ -30,17 +30,17 @@ def grafico(funcao, iteracoes, a=None, b=None, titulo_metodo="Método Numérico 
     # Marca o eixo x
     plt.axhline(0, color='black', linewidth=0.8)
 
-    # Marca os pontos de iteração
+     # Marca os pontos de iteração
     y_iter = [funcao(x) for x in iteracoes]
     plt.scatter(iteracoes, y_iter, color='crimson', s=60, zorder=3,
-                markersize=5, markercolor='black', label='Iterações')
+                edgecolor='black',linewidths=1.0, label='Iterações')
 
     # Liga as iterações por linhas tracejadas
     plt.plot(iteracoes, y_iter, color='crimson', linestyle='--', alpha=0.8)
 
     # Destaca a última aproximação (raiz final)
-    plt.scatter(iteracoes[-1], funcao(iteracoes[-1]), color='yellow', s=80, 
-                markersize=5, markercolor='black', zorder=4, label='Raiz Aproximada')
+    plt.scatter(iteracoes[-1], funcao(iteracoes[-1]), color='yellow', s=80,
+                edgecolor='black',linewidths=1.0, zorder=4, label='Raiz Aproximada')
 
     # Configurações estéticas
     plt.title(titulo_metodo, fontsize=14, fontweight='bold')
