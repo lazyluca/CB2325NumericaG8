@@ -136,22 +136,3 @@ def integral(funcao, a, b, n=100, mostrar_grafico=False, precisao=None, metodo='
 
     funcao_escolhida = metodos_integral[metodo]
     return funcao_escolhida(funcao, a, b, n, mostrar_grafico, precisao)
-
-
-if __name__ == "__main__":
-    funcao1 = lambda x: np.sin(x)
-    funcao2 = lambda x: np.sin(3*x)
-    a = 0
-    b = np.pi
-    '''número de pontos para a curva suave'''
-    # s = 100 
-    ''' n = número de partições de trapézios'''
-    area1 = integral(funcao1, a, b, n=3, mostrar_grafico=True, metodo='Trapezoidal')
-    print(area1)
-    area2 = integral(funcao1, a, b, n=3, mostrar_grafico=True, metodo='Simpson')
-    print(area2)
-    area3 = integral(funcao2, a, b, n=4, mostrar_grafico=True, metodo='Trapezoidal')
-    print(area3)
-    area4 = integral(funcao2, a, b, n=4, mostrar_grafico=True, metodo='Simpson')
-    print(area4)
-    # grafico(funcao, a, b, s, area, n=20)
