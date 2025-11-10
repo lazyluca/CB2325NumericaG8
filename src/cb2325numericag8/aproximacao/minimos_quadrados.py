@@ -76,7 +76,7 @@ def AproximacaoPolinomial(abscissas: list, ordenadas: list, grau: int = 1, plot:
         )
     
     if grau == 1:
-        return ajuste_linear(abscissas, ordenadas, plot)
+        return list(ajuste_linear(abscissas, ordenadas, plot))
     
     X = []
     for xi in abscissas:
@@ -96,4 +96,3 @@ def AproximacaoPolinomial(abscissas: list, ordenadas: list, grau: int = 1, plot:
         plot_aproximacao(abscissas, ordenadas, coeficientes, n)
     
     return coeficientes
-
