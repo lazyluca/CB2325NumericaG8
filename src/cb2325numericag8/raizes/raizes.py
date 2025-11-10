@@ -199,29 +199,3 @@ def newton(funcao, a, f_prime, tol, max_iter):
         iter += 1
     
     raise RuntimeError("Número máximo de iterações atingido sem convergência.")
-
-
-
-#Testes temporários
-if __name__=="__main__":
-  
-  f=lambda x: x**2 - 2
-  valor1,_ = raiz(f, 0, 2, 1e-6) #teste sem especificar metodo
-  print(valor1)
-
-  f=lambda x: x**3 - 9*x + 5
-  raiz_0,_= raiz(f, a=0, b=2, tol=1e-6, method="secante")
-  print(f"{raiz_0:.3f}")
-
-  g= lambda x: x**10 - 5
-  valor2,_ = raiz(g, 0, 4, 1e-6, method="bissecao")
-  print(valor2)
-
-  h = lambda x: x**10 - 5
-  h_prime = lambda x: 10 * x**9
-  valor2,_=raiz(h,2,f_prime=h_prime,tol=1e-6, method="newton_raphson")
-  print(valor2)
-
-  h = lambda x: x**10 - 5
-  valor2,_=raiz(h,2,tol=1e-6, method="newton_raphson")
-  print(valor2)
