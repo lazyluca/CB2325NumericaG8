@@ -25,7 +25,8 @@ def grafico_interpolacao_linear(interpolador, a=None, b=None, s=400):
 
     # Pontos de base
     plt.scatter(interpolador.x, interpolador.y,
-                color='#2255A4', s=60, zorder=3, label='Pontos Originais (x, f(x))')
+                color='blue', s=60, zorder=3, markersize=5 ,
+                  markercolor='black', label='Pontos Originais (x, f(x))')
 
     # Linhas lineares por partes
     plt.plot(x_plot, y_plot,
@@ -40,6 +41,6 @@ def grafico_interpolacao_linear(interpolador, a=None, b=None, s=400):
     plt.title('Interpolação Linear por Partes', fontsize=14, fontweight='bold')
     plt.xlabel('Eixo X', fontsize=12)
     plt.ylabel('Eixo Y', fontsize=12)
-    plt.legend(frameon=True, shadow=True)
+    plt.legend(loc='best', frameon=True, shadow=True)
     plt.tight_layout()
     plt.show()
