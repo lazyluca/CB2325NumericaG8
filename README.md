@@ -29,7 +29,7 @@ Este projeto implementa as seguintes funcionalidades:
 
 * **Aproximação:**
     * Regressão Linear;
-    * Mínimos Quadrados.
+    * Aproximação Polinomial.
 ---
 
 ## 📋 Pré-requisitos
@@ -233,9 +233,10 @@ print(area2)
 print(area3)
 print(area4)
 ```
-## Aproximação
+### Aproximação
+Aqui estão exemplos de como usar os métodos aproximação polinomial.
 
-### Aproximacao Polinomial
+#### Aproximacao Polinomial
 ```python
 # 1. Defina os pontos (dados experimentais)
 x = [0, 1, 2, 3, 4, 5]
@@ -253,7 +254,7 @@ print(ajuste1)
 print(ajuste2)
 ```
 
-### Regressão Linear
+#### Regressão Linear
 ```python
 # 1. Defina os pontos (dados experimentais)
 x = [0, 1, 2, 3, 4, 5]
@@ -266,13 +267,13 @@ ajuste1 = ajuste_linear(x, y,)
 print(ajuste1)
 ```
 
-### Representação Gráfica
+## Representação Gráfica
 
 Aqui estão exemplos de como usar as funções de representação gráfica.
 
-#### Interpoladores
+### Interpoladores
 
-##### Interpolação de Hermite
+#### Interpolação de Hermite
 ```python
 # 1. Definimos os pontos conhecidos e suas derivadas
 valores_x = [0, 1, 2]
@@ -290,7 +291,7 @@ print(f"H({x_avaliar}) =", interpolador(x_avaliar))
 interpolador.grafico()
 
 ```
-##### Interpolação Linear por Partes 
+#### Interpolação Linear por Partes 
 ```python
 # 1. Definimos os pontos conhecidos
 valores_x = [1, 2, 3, 5]
@@ -306,7 +307,7 @@ print(f"f({x_avaliar}) =", interpolador(x_avaliar))
 # 4. Geramos o gráfico da interpolação linear por partes
 interpolador.grafico()
 ```
-##### Interpolação Polinomial
+#### Interpolação Polinomial
 ```python
 # 1. Definimos os pontos conhecidos
 valores_x = [0, 1, 2, 3]
@@ -323,7 +324,7 @@ print(f"P({x_avaliar}) =", interpolador(x_avaliar))
 interpolador.grafico()
 ```
 
-#### Raízes
+### Raízes
 ```python
 # 1. Definimos a função cuja raiz queremos encontrar
 f = lambda x: x**3 - 9*x + 5
@@ -341,7 +342,7 @@ print(f"Raiz aproximada: {raiz_aproximada:.6f}")
 # 5. Geramos o gráfico com as iterações e a função
 grafico(f, iteracoes, a, b, titulo_metodo="Método da Secante")
 ```
-#### Integração Numérica
+### Integração Numérica
 
 ```python
 # 1. Definimos a função
@@ -357,7 +358,7 @@ area_simp = integral(f, 0, 3, n=20, metodo='Simpson', mostrar_grafico=True)
 print("Área (Simpson) =", area_simp)
 ```
 
-#### Aproximação
+### Aproximação
 
 ##### Regressão Linear
 ```python
@@ -375,7 +376,7 @@ print(f"Equação ajustada: y = {a:.2f}x + {b:.2f}")
 grafico_ajuste_linear(x, y, a, b)
 ```
 
-##### Mínimos Quadrados
+##### Aproximação polinomial
 ```python
 # 1. Definimos os pontos de entrada (x, y)
 x = [0, 1, 2, 3, 4]
