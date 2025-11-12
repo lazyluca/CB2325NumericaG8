@@ -1,6 +1,6 @@
 # 📈 Cálculo Numérico
 
-Este repositório contém implementações de métodos de integração numérica, interpolação, raízes e cálculo de erros, desenvolvidos para a disciplina de programação 2 do IMPA TECH. Exemplos iterativos de uso estão disponiveis no notebook.
+Este repositório contém implementações de métodos de aproximações, integração numérica, interpolação, raízes e cálculo de erros, desenvolvidos para a disciplina de programação 2 do IMPA TECH. Exemplos iterativos de uso estão disponiveis no notebook.
 
 ---
 
