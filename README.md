@@ -234,7 +234,7 @@ print(area3)
 print(area4)
 ```
 ### Aproximação
-Aqui estão exemplos de como usar os métodos para aproximação polinomial.
+Aqui estão exemplos de como usar os métodos para aproximação polinomial e regressão linear.
 
 #### Aproximação Polinomial
 ```python
