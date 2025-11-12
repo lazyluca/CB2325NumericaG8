@@ -1,6 +1,6 @@
 # 📈 Cálculo Numérico
 
-Este repositório contém implementações de métodos de aproximações, integração numérica, interpolação, raízes e cálculo de erros, desenvolvidos para a disciplina de programação 2 do IMPA TECH. Exemplos iterativos de uso estão disponiveis no notebook.
+Este repositório contém implementações de métodos de aproximações, integração numérica, interpolação, raízes e cálculo de erros, desenvolvidos para a disciplina de programação 2 do IMPA TECH. Exemplos iterativos de uso estão disponiveis na pasta notebook.
 
 ---
 
@@ -155,7 +155,7 @@ while i < 10.5:
     i += 0.5
 ```
 ### Raízes
-Aqui estão exemplos de como usar os métodos raízes de funções.
+Aqui estão exemplos de como usar os métodos para obtenção de raízes de funções.
 
 #### Método da Bisseção 
 
@@ -234,9 +234,9 @@ print(area3)
 print(area4)
 ```
 ### Aproximação
-Aqui estão exemplos de como usar os métodos aproximação polinomial.
+Aqui estão exemplos de como usar os métodos para aproximação polinomial.
 
-#### Aproximacao Polinomial
+#### Aproximação Polinomial
 ```python
 # 1. Defina os pontos (dados experimentais)
 x = [0, 1, 2, 3, 4, 5]
