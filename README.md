@@ -26,6 +26,10 @@ Este projeto implementa as seguintes funcionalidades:
 * **Integração Numérica:**
     * Método do Trapézio;
     * Método de Simpson.
+
+* **Aproximação:**
+    * Regressão Linear;
+    * Mínimos Quadrados.
 ---
 
 ## 📋 Pré-requisitos
