@@ -233,6 +233,7 @@ print(area2)
 print(area3)
 print(area4)
 ```
+## Aproximação
 
 ### Aproximacao Polinomial
 ```python
@@ -252,7 +253,7 @@ print(ajuste1)
 print(ajuste2)
 ```
 
-### Regressã Linear
+### Regressão Linear
 ```python
 # 1. Defina os pontos (dados experimentais)
 x = [0, 1, 2, 3, 4, 5]
