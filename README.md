@@ -234,27 +234,37 @@ print(area3)
 print(area4)
 ```
 
-### Regressão Linear
+### Aproximacao Polinomial
 ```python
 # 1. Defina os pontos (dados experimentais)
 x = [0, 1, 2, 3, 4, 5]
 y = [2.1, 2.9, 4.2, 5.1, 6.8, 8.0]
 
 # 2. Defina o grau do polinômio (opcional)
-grau1 = 1   # Ajuste linear
 grau2 = 2   # Ajuste quadrático
 
-# 3. Defina se deseja exibir o gráfico (opcional)
-exibir = True
+# 3. Realize a chamada da função
+ajuste1 = AproximacaoPolioimial(x, y, plot = True) #Ajuste linear
+ajuste2 = AproximacaoPolinomial(x, y, grau=grau2)
 
-# 4. Realize a chamada da função
-ajuste1 = aproximacao_polinomial(x, y, grau=grau1, mostrar_grafico=exibir)
-ajuste2 = aproximacao_polinomial(x, y, grau=grau2)
-
-# 5. Saída esperada: gráfico (para ajuste1) e coeficientes
+# 4. Saída esperada: gráfico (para ajuste1) e coeficientes
 print(ajuste1)
 print(ajuste2)
 ```
+
+### Regressã Linear
+```python
+# 1. Defina os pontos (dados experimentais)
+x = [0, 1, 2, 3, 4, 5]
+y = [2.1, 2.9, 4.2, 5.1, 6.8, 8.0]
+
+# 2. Realize a chamada da função
+ajuste1 = ajuste_linear(x, y,)
+
+# 3. Saída esperada: gráfico e coeficientes
+print(ajuste1)
+```
+
 ### Representação Gráfica
 
 Aqui estão exemplos de como usar as funções de representação gráfica.
