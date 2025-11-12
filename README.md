@@ -360,7 +360,7 @@ print("Área (Simpson) =", area_simp)
 
 ### Aproximação
 
-##### Regressão Linear
+#### Regressão Linear
 ```python
 # 1. Definimos os dados experimentais
 x = [0, 1, 2, 3, 4]
@@ -376,7 +376,7 @@ print(f"Equação ajustada: y = {a:.2f}x + {b:.2f}")
 grafico_ajuste_linear(x, y, a, b)
 ```
 
-##### Aproximação polinomial
+#### Aproximação polinomial
 ```python
 # 1. Definimos os pontos de entrada (x, y)
 x = [0, 1, 2, 3, 4]
